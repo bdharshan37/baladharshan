@@ -2275,6 +2275,8 @@ html[data-theme="dark"] .tl-notes .fp-req{color:#E6D9C8;border-color:rgba(242,13
   .imp-flow{grid-template-columns:1fr;gap:2.4rem}
   .imp-c + .imp-c::before{left:0;top:-1.9rem;width:22px;height:22px;transform:rotate(90deg)}
 }
+
+.theme-arrow{display:none!important}
 </style>
 
 <!-- ===== shared ink: hatches, washes, chipped edges ===== -->
@@ -2412,7 +2414,7 @@ html[data-theme="dark"] .tl-notes .fp-req{color:#E6D9C8;border-color:rgba(242,13
         </g>
       </svg>
     </button>
-    <span class="theme-arrow" aria-hidden="true"><svg viewBox="0 0 70 44"><g filter="url(#rough)"><path class="ta-line" d="M66 38 C52 40 38 34 30 24 C24 16 20 12 12 9"/><path class="ta-head" d="M20 4 L10 8.5 L17 16"/></g></svg></span>
+    
       </div>
 
   <figure class="portrait"><canvas id="portraitCv" width="760" height="710" role="img" aria-label="Ink and wash portrait of Baladharshan"></canvas></figure>
@@ -2498,21 +2500,6 @@ html[data-theme="dark"] .tl-notes .fp-req{color:#E6D9C8;border-color:rgba(242,13
     <a class="scroll-cue" href="#lead"><span>Scroll to know more about me</span><svg viewBox="0 0 20 30" aria-hidden="true"><path d="M10 3 C9 10 11 16 10 24 M4 18 L10 25 L16 18"/></svg></a>
   </div>
 
-  <div data-3d-host class="eph gt-wrap hide-sm" data-speed="-.35" style="--r:-12deg;left:3vw;top:44%">
-    <canvas class="r3d gt3d" data-asset="ticket" role="img" aria-label="Cinema ticket: admit one, first day, first show, whenever I can"></canvas>
-    <div class="gticket fb" id="gticket" tabindex="0" aria-label="Cinema ticket: first day, first show, whenever I can">
-      <div class="gt-face">
-        <div class="gt-main">
-          <span class="gt-k">Admit one</span>
-          <span class="gt-t">First day<br>First show</span>
-          <span class="gt-s">whenever I can</span>
-        </div>
-        <div class="gt-stub"><span>No.</span><b>0001</b></div>
-        <i class="gt-foil" aria-hidden="true"></i>
-        <i class="gt-shine" aria-hidden="true"></i>
-      </div>
-    </div>
-  </div>
   <div class="eph ticket yel" data-speed="-.18" style="--r:18deg;left:58vw;top:3%;width:120px"><strong>V2</strong>Card framework</div>
 </section>
 
@@ -3097,9 +3084,6 @@ html[data-theme="dark"] .tl-notes .fp-req{color:#E6D9C8;border-color:rgba(242,13
 </footer>
 </main>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/environments/RoomEnvironment.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/geometries/RoundedBoxGeometry.js"></script>
 <script>
 /* Glossy 3D assets for the portfolio, built with Three.js (r128).
    One shared WebGL renderer draws each asset into its own 2D canvas,
