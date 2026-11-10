@@ -1,5 +1,6 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<title>Cream Edition Wood</title>
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23EEFF00'/%3E%3Ctext x='32' y='47' text-anchor='middle' font-family='Arial Narrow,Impact,Arial,sans-serif' font-weight='900' font-size='46' fill='%23211C2B'%3EB%3C/text%3E%3C/svg%3E"></head><body>
+<title>Baladharshan Portfolio</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23EEFF00'/%3E%3Ctext x='32' y='47' text-anchor='middle' font-family='Arial Narrow,Impact,Arial,sans-serif' font-weight='900' font-size='46' fill='%23211C2B'%3EB%3C/text%3E%3C/svg%3E">
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -2219,6 +2220,9 @@ html[data-theme="dark"] #studio .print{filter:drop-shadow(0 12px 16px rgba(0,0,0
 /* ---------- enterprise design block in The Lead ---------- */
 .ent{position:relative;z-index:3;margin-top:clamp(3rem,6vw,5rem);padding-top:1.2rem;border-top:1.5px solid var(--ink)}
 .ent-k{margin:0 0 .8rem}
+.ent-lede b{font-weight:700;color:#C93A12}
+.ent-ai{margin-top:clamp(2rem,4vw,3rem)}
+.ent-ai .ent-lede{margin-bottom:0}
 .ent-lede{margin:0 0 1.6rem;max-width:60ch;font-family:var(--f-label);font-size:clamp(1.05rem,1.5vw,1.25rem);line-height:1.5;color:var(--ink)}
 .ent-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
 .ent-list li{padding:0 1.4rem;border-left:1px solid rgba(33,28,43,.3)}
@@ -2728,6 +2732,11 @@ html[data-theme="dark"] .tl-notes .fp-req{color:#E6D9C8;border-color:rgba(242,13
       <li><h4>Trust is the feature</h4><p>In security, people need to see what happened and what to do next.</p></li>
       <li><h4>Start in the unknown</h4><p>Most of what I lead is 0 to 1. Workflows began as a hackathon idea and went to GA.</p></li>
     </ol>
+  </div>
+
+  <div class="ent ent-ai" aria-labelledby="ai-t">
+    <p class="caps ent-k" id="ai-t">How I use AI</p>
+    <p class="ent-lede">I design in code, with AI as part of how I normally work. I build in Storybook using Cursor and Claude, and <b>9 of my 11 projects</b> went from idea to working screens this way. That is how Workflows shipped in 25 days and how I built the Tree select component for Circuit. Working prototypes let customers react to something real, and what they say decides what I build next. At staff level I use AI to cover more ground, and I keep the calls on what to build, what to cut and what is ready for customers.</p>
   </div>
 
   <div class="principles" id="principles">
@@ -4068,7 +4077,14 @@ html[data-theme="dark"] .tl-notes .fp-req{color:#E6D9C8;border-color:rgba(242,13
           blocks: [['The challenge', 'These workflows suspend users and lock devices, often when no one is watching. Runs can loop, take a long time and return large outputs, so showing everything would hide the one step that failed.'],
             ['What admins needed', 'The admin who turns on an automation is still responsible for what it does. When a manager asks why someone lost access, or an auditor asks who removed a device, the admin needs to answer quickly and show evidence. Saving manual work mattered, but admins cared more about never being surprised by something a workflow did on their behalf.'],
             ['How I designed it', 'Each workflow runs as a named admin role, shown next to its title, so it can only do what that role allows. Execution history lists every run with its status. Opening a run shows each step in order with its input and output, sums up loops in one line, and links to Directory Insights for the audit trail.', true]],
-          call: 'Errors, failures and runs still in progress each have their own status, so the runs that need attention are easy to spot.' }
+          call: 'Errors, failures and runs still in progress each have their own status, so the runs that need attention are easy to spot.' },
+        { k: 'Built with AI', h: 'Fitting a visual builder into 25 days',
+          blocks: [
+            ['The time', 'Admins had asked for a visual builder for years, and the project ran 25 days. Drawing every state of a builder by hand would have left little time for anything else.'],
+            ['Working screens early', 'I used Cursor and Claude to build the screens in Storybook. Customers could click through something real in review calls, and I could change what they pointed out the same day.'],
+            ['The missing component', 'Admins pick from nested lists all the time, and Circuit had no component for it. I built Tree select with AI, starting from PrimeVue’s TreeSelect, so teams didn’t need their own dropdowns.']
+          ],
+          call: 'AI let me finish a large build in 25 days and still review it with customers.' }
       ]
     }
   };
@@ -4109,7 +4125,13 @@ html[data-theme="dark"] .tl-notes .fp-req{color:#E6D9C8;border-color:rgba(242,13
           ['The old phone isn’t in your hand', 'The codes can’t be removed from the old phone right away. It clears them the next time it opens Protect with an internet connection. The screen shows this clearly: this phone is working, Alex’s iPhone is waiting to clear, and until then both phones show codes.'],
           ['When it never comes back', 'If the old phone is lost or wiped, its codes keep working until they’re replaced. To fix this, the user follows two steps for each account: open the account’s security settings and scan a new QR code in Protect. Work accounts are reset by the IT admin. Remind me later means no one gets blocked.', true]
         ],
-        call: 'When something can’t happen yet, the screen says so and gives the next step.' }
+        call: 'When something can’t happen yet, the screen says so and gives the next step.' },
+      { k: 'Built with AI', h: 'Covering the awkward cases in 14 days',
+        blocks: [
+          ['The cases', 'Restore looks simple until the old phone is offline, wiped or already sold. The project ran 14 days, and each of those cases needed its own screen and its own wording.'],
+          ['Working through them', 'I used Claude to list the cases and draft the wording for each one, then built the screens in Storybook with Cursor. That let me try versions quickly and compare them before showing customers.']
+        ],
+        call: 'AI gave me time to cover the awkward cases within 14 days.' }
     ]
   };
   STORY[1] = {
@@ -4247,7 +4269,7 @@ html[data-theme="dark"] .tl-notes .fp-req{color:#E6D9C8;border-color:rgba(242,13
         <p class="st-k"><b>${String(n + 1).padStart(2, '0')}</b><span>${c.k}</span></p>
         <h4 class="st-h">${c.h}</h4>
         ${c.shots ? bwGallery(i, c.shots, `data-story="${i}" data-c="${n}"`, ' st-gal') : c.phones ? `<div class="ph-row" data-story="${i}" data-c="${n}" style="--n:${c.phones.length}">${c.phones.map((sh, j) => `<figure class="ph-fig"><button type="button" class="ph-btn" data-j="${j}" aria-label="Enlarge: ${sh.cap}">${phoneFrame(sh, false)}</button><figcaption><b>${String(j + 1).padStart(2, '0')}</b>${sh.cap}</figcaption></figure>`).join('')}</div>`
-          : `<div class="bw one st-shot" data-story="${i}" data-c="${n}">${bwWindow(c.shot, false)}<p class="bw-cap"><b></b><span>${c.shot.cap}</span></p></div>`}
+          : c.shot ? `<div class="bw one st-shot" data-story="${i}" data-c="${n}">${bwWindow(c.shot, false)}<p class="bw-cap"><b></b><span>${c.shot.cap}</span></p></div>` : ''}
         <dl class="st-grid">${c.blocks.map(([k, v, w]) => `<div${w ? ' class="wide"' : ''}><dt>${k}</dt><dd>${v}</dd></div>`).join('')}</dl>
         ${c.call ? `<p class="st-call"><span>Decision</span>${c.call}</p>` : ''}
       </section>`).join('')}</div>`;
@@ -4409,7 +4431,7 @@ html[data-theme="dark"] .tl-notes .fp-req{color:#E6D9C8;border-color:rgba(242,13
         if (e.target.closest('.bw-arrow.prev')) return show(g, k - 1);
         if (e.target.closest('.bw-arrow.next')) return show(g, k + 1);
         const th = e.target.closest('.bw-th'); if (th) return show(g, +th.dataset.k);
-        if (g.dataset.story != null && !g.classList.contains('st-gal')) { if (e.target.closest('.bw-screen')) lbOpen(STORY[+g.dataset.story].ch.map(c => c.shot), +g.dataset.c, g); return; }
+        if (g.dataset.story != null && !g.classList.contains('st-gal')) { if (e.target.closest('.bw-screen')) lbOpen(STORY[+g.dataset.story].ch.filter(c => c.shot).map(c => c.shot), +g.dataset.c, g); return; }
         if (e.target.closest('.bw-screen')) return lbOpen(listOf(g), k, g);
         return;
       }
