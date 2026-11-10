@@ -2266,29 +2266,28 @@ html[data-theme="dark"] .tl-notes .fp-req{color:#E6D9C8;border-color:rgba(242,13
 .imp-c ul{list-style:none;margin:0;padding:0;display:grid;gap:.7rem}
 .imp-c ul li{padding-top:.7rem;border-top:1px dashed rgba(255,246,236,.3);font-size:1rem;line-height:1.45;color:rgba(255,246,236,.82)}
 .imp-c ul li b{color:#FFF6EC;font-weight:600}
-/* impact switcher: a departure board, teal enamel with print grain, turmeric for the open row */
-.board{position:relative;z-index:3;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem;margin:1.6rem 0 0;padding:.8rem;background-color:#2A7F86;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),radial-gradient(rgba(255,246,236,.14) 1.1px,transparent 1.4px),linear-gradient(160deg,rgba(255,255,255,.1),rgba(0,0,0,.14));background-size:180px 180px,9px 9px,100% 100%;border:1.5px solid rgba(255,246,236,.55);border-radius:14px;box-shadow:0 14px 26px -16px rgba(0,0,0,.6)}
-.bd-row{display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-areas:"lamp flap" "lamp meta";gap:.2rem .8rem;align-items:center;padding:.8rem 1rem;margin:0;border:1.5px dashed rgba(255,246,236,.4);border-radius:9px;background:transparent;color:rgba(255,246,236,.82);font:inherit;text-align:left;cursor:pointer;transition:background .25s,border-color .25s,color .25s}
-.bd-row:hover{background:rgba(255,246,236,.12);color:#FFF6EC}
-.bd-row:focus-visible{outline:2px solid #FFF6EC;outline-offset:2px}
-.bd-row[aria-selected="true"]{border-style:solid;border-color:#211C2B;background-color:#E3A21A;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px 180px;background-blend-mode:multiply;color:#211C2B;box-shadow:0 8px 16px -10px rgba(0,0,0,.7)}
-.bd-lamp{grid-area:lamp;width:12px;height:12px;border-radius:50%;background:#1F5E64;box-shadow:inset 0 0 0 1px rgba(255,246,236,.35);transition:background .3s,box-shadow .3s}
-.bd-row[aria-selected="true"] .bd-lamp{background:#C93A12;box-shadow:0 0 0 3px rgba(33,28,43,.25)}
-.bd-flap{grid-area:flap;display:flex;flex-wrap:wrap;gap:3px}
-.bd-name{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
-.bd-meta{grid-area:meta;font-family:var(--f-label);font-size:.82rem;line-height:1.35;letter-spacing:.02em}
-.fl{display:inline-block;min-width:.72em;height:1.35em;line-height:1.35em;text-align:center;font-family:var(--f-display);font-size:clamp(1.3rem,2.4vw,1.9rem);color:#FFF6EC;background:linear-gradient(#237078 49%,#143F44 50%,#237078 51%);border-radius:3px;transform-origin:50% 50%}
-.bd-row[aria-selected="true"] .fl{color:#F5C46A;background:linear-gradient(#2E2838 49%,#14111A 50%,#2E2838 51%)}
-.fl.go{animation:flap .11s ease-in-out}
-@keyframes flap{0%{transform:rotateX(0)}50%{transform:rotateX(-80deg)}100%{transform:rotateX(0)}}
+/* impact switcher: a small two-option toggle */
+.seg{position:relative;z-index:3;display:inline-flex;gap:2px;margin:1.4rem 0 0;padding:3px;border:1.5px solid rgba(255,246,236,.55);border-radius:99px}
+.seg-b{margin:0;padding:.4rem 1.1rem;border:0;border-radius:99px;background:transparent;color:rgba(255,246,236,.85);font-family:var(--f-label);font-weight:600;font-size:.92rem;line-height:1.2;cursor:pointer;transition:background .2s,color .2s}
+.seg-b{display:inline-flex;align-items:center;gap:.5rem}
+.seg-l{display:block;flex:none;width:20px;height:20px;object-fit:contain;border-radius:4px;background:#FFF6EC;padding:2px;box-sizing:border-box}
+.seg-b:hover{background:rgba(255,246,236,.14)}
+.seg-b[aria-selected="true"]{background:#F5C46A;color:#211C2B}
+.seg-b:focus-visible{outline:2px solid #FFF6EC;outline-offset:2px}
 .imp-panel{display:block}
 .imp-panel[hidden]{display:none}
 .imp-panel.in{animation:panelIn .4s ease-out}
 @keyframes panelIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 @media (max-width:560px){.board{grid-template-columns:minmax(0,1fr)}}
 @media (prefers-reduced-motion:reduce){.fl.go,.imp-panel.in{animation:none}}
-.ms-screens{position:relative;z-index:3;display:flex;gap:clamp(.7rem,1.6vw,1.2rem);align-items:flex-end;margin-top:1.6rem;padding-bottom:.4rem;overflow-x:auto}
-.ms-screens img{display:block;flex:none;height:clamp(260px,34vw,420px);width:auto;max-width:none;border-radius:16px;border:1px solid rgba(255,246,236,.3);box-shadow:0 14px 26px -16px rgba(0,0,0,.7)}
+.ms-media{position:relative;z-index:3;display:flex;flex-wrap:wrap;align-items:flex-start;gap:clamp(1rem,2.4vw,2rem);margin-top:1.6rem}
+.ms-screens{display:flex;flex:0 1 auto;gap:clamp(.6rem,1.4vw,1rem);align-items:flex-end;min-width:0;max-width:100%;padding-bottom:.4rem;overflow-x:auto}
+.ms-screens img{display:block;flex:none;height:clamp(240px,30vw,360px);width:auto;max-width:none;border-radius:16px;border:1px solid rgba(255,246,236,.3);box-shadow:0 14px 26px -16px rgba(0,0,0,.7)}
+.ms-why{display:flex;flex-direction:column;gap:1rem;width:clamp(200px,24vw,300px);flex:none}
+.ms-why figure{margin:0;display:flex;flex-direction:column;gap:.45rem;min-width:0}
+.ms-why img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:10px;border:1px solid rgba(255,246,236,.3);box-shadow:0 10px 20px -14px rgba(0,0,0,.7)}
+.ms-why figcaption{font-family:var(--f-label);font-weight:600;font-size:.82rem;line-height:1.3;color:#FFF6EC}
+.ms-src{flex-basis:100%;margin:0;font-size:.78rem;color:rgba(255,246,236,.65)}
 .imp-in{border-top:0;padding-top:0;margin-top:clamp(1.6rem,3vw,2.4rem)}
 .ms-cta{display:inline-flex;gap:.5rem;align-items:center;margin-top:1.8rem;font-weight:600;font-size:1rem;color:#F5C46A;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:2px;position:relative;z-index:3}
 .ms-cta span{transition:translate .2s}.ms-cta:hover span{translate:4px 0}
@@ -2915,9 +2914,9 @@ html[data-theme="dark"] .tl-notes .fp-req{color:#E6D9C8;border-color:rgba(242,13
     </div>
     <p class="script part-aside">what changed, and for whom</p>
   </div>
-  <div class="board" role="tablist" aria-label="Choose a company to see its impact">
-    <button type="button" class="bd-row" role="tab" id="bd-jc" aria-selected="true" aria-controls="imp-jc" data-t="JUMPCLOUD"><span class="bd-lamp" aria-hidden="true"></span><span class="bd-flap" aria-hidden="true"></span><span class="bd-name">JumpCloud</span><span class="bd-meta">Senior Product Designer<br>2024 &ndash; now</span></button>
-    <button type="button" class="bd-row" role="tab" id="bd-ms" aria-selected="false" aria-controls="imp-ms" tabindex="-1" data-t="MICROSOFT"><span class="bd-lamp" aria-hidden="true"></span><span class="bd-flap" aria-hidden="true"></span><span class="bd-name">Microsoft</span><span class="bd-meta">Product Designer<br>2021 &ndash; 2023</span></button>
+  <div class="seg" role="tablist" aria-label="Choose a company to see its impact">
+    <button type="button" class="seg-b" role="tab" id="bd-jc" aria-selected="true" aria-controls="imp-jc"><img class="seg-l" src="img/jumpcloud-logo.png" alt="" width="20" height="20">JumpCloud</button>
+    <button type="button" class="seg-b" role="tab" id="bd-ms" aria-selected="false" aria-controls="imp-ms" tabindex="-1"><svg class="seg-l" viewBox="0 0 40 40" aria-hidden="true"><rect x="4" y="4" width="16" height="16" fill="#F25022"/><rect x="22" y="4" width="16" height="16" fill="#7FBA00"/><rect x="4" y="22" width="16" height="16" fill="#00A4EF"/><rect x="22" y="22" width="16" height="16" fill="#FFB900"/></svg>Microsoft</button>
   </div>
   <div class="imp-panel" id="imp-jc" role="tabpanel" aria-labelledby="bd-jc">
   <p class="proj-intro">What my work changed at JumpCloud: for the business, for the admins who use it, and for the teams around me. Each step led to the next.</p>
@@ -3130,7 +3129,14 @@ html[data-theme="dark"] .tl-notes .fp-req{color:#E6D9C8;border-color:rgba(242,13
   </div>
   <div class="imp-panel" id="imp-ms" role="tabpanel" aria-labelledby="bd-ms" hidden>
     <p class="proj-intro">What my work changed at Microsoft: for the product, for the people who use it, and for the team that builds it.</p>
-    <div class="ms-screens" role="group" aria-label="Microsoft Defender screens"><img src="img/defender-ios-1.jpg" alt="Microsoft Defender, iOS home screen with a recommendation card" loading="lazy" width="460" height="995"><img src="img/defender-ios-2.jpg" alt="Microsoft Defender, iOS credit monitoring with a credit alert" loading="lazy" width="460" height="995"><img src="img/defender-ios-3.jpg" alt="Microsoft Defender, iOS dark web monitoring for family members" loading="lazy" width="460" height="995"><img src="img/defender-android-1.jpg" alt="Microsoft Defender, Android home screen" loading="lazy" width="460" height="818"><img src="img/defender-android-2.jpg" alt="Microsoft Defender, Android device protection status" loading="lazy" width="460" height="818"></div>
+    <div class="ms-media">
+    <div class="ms-screens" role="group" aria-label="Microsoft Defender screens"><img src="img/defender-ios-1.jpg" alt="Microsoft Defender, iOS home screen with a recommendation card" loading="lazy" width="460" height="995"><img src="img/defender-ios-2.jpg" alt="Microsoft Defender, iOS credit monitoring with a credit alert" loading="lazy" width="460" height="995"><img src="img/defender-ios-3.jpg" alt="Microsoft Defender, iOS dark web monitoring for family members" loading="lazy" width="460" height="995"><img src="img/defender-android-2.jpg" alt="Microsoft Defender, Android device protection status" loading="lazy" width="460" height="818"></div>
+    <div class="ms-why" role="group" aria-label="Why Defender">
+      <figure><img src="img/defender-why-1.jpg" alt="Microsoft Defender artwork: a phone showing a protected shield beside coloured discs" loading="lazy" width="1200" height="675"><figcaption>Stay ahead of online threats</figcaption></figure>
+      <figure><img src="img/defender-why-2.jpg" alt="Microsoft Defender artwork: a device protection toggle for a family member" loading="lazy" width="1200" height="675"><figcaption>Safeguard your devices</figcaption></figure>
+    </div>
+      <p class="ms-src">Thumbnails from the Why Defender section on microsoft.com.</p>
+    </div>
     <div class="imp imp-in">
       <p class="caps imp-k">Who it changed things for</p>
       <ol class="imp-flow">
@@ -4711,43 +4717,25 @@ document.querySelectorAll('.ct-copy').forEach(b => b.addEventListener('click', a
 
 <script>
 (function(){
-  var rows=[].slice.call(document.querySelectorAll('.bd-row'));
-  if(!rows.length)return;
-  var calm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var ABC='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  function build(r){var f=r.querySelector('.bd-flap');f.textContent='';r._c=r.dataset.t.split('').map(function(ch){var e=document.createElement('span');e.className='fl';e.textContent=ch;f.appendChild(e);return e;});}
-  rows.forEach(build);
-  function flip(r){
-    if(calm)return;
-    r._c.forEach(function(e,i){
-      var fin=r.dataset.t[i],n=0;
-      setTimeout(function(){
-        var t=setInterval(function(){
-          n++;e.classList.remove('go');void e.offsetWidth;e.classList.add('go');
-          e.textContent=n>3?fin:ABC[Math.floor(Math.random()*26)];
-          if(n>3)clearInterval(t);
-        },70);
-      },i*45);
-    });
-  }
-  function show(r,focus){
-    rows.forEach(function(x){
-      var on=x===r;
+  var tabs=[].slice.call(document.querySelectorAll('.seg-b'));
+  if(!tabs.length)return;
+  function show(t,focus){
+    tabs.forEach(function(x){
+      var on=x===t;
       x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;
       var p=document.getElementById(x.getAttribute('aria-controls'));
       p.hidden=!on;
       if(on){p.classList.remove('in');void p.offsetWidth;p.classList.add('in');}
     });
-    flip(r);if(focus)r.focus();
+    if(focus)t.focus();
   }
-  rows.forEach(function(r,i){
-    r.addEventListener('click',function(){if(r.getAttribute('aria-selected')!=='true')show(r);});
-    r.addEventListener('keydown',function(e){
-      var k=e.key,j=-1;
-      if(k==='ArrowRight'||k==='ArrowDown')j=(i+1)%rows.length;
-      else if(k==='ArrowLeft'||k==='ArrowUp')j=(i+rows.length-1)%rows.length;
-      else if(k==='Home')j=0;else if(k==='End')j=rows.length-1;
-      if(j>=0){e.preventDefault();show(rows[j],true);}
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){show(t);});
+    t.addEventListener('keydown',function(e){
+      var j=-1,k=e.key;
+      if(k==='ArrowRight'||k==='ArrowDown')j=(i+1)%tabs.length;
+      else if(k==='ArrowLeft'||k==='ArrowUp')j=(i+tabs.length-1)%tabs.length;
+      if(j>=0){e.preventDefault();show(tabs[j],true);}
     });
   });
 })();
