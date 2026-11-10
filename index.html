@@ -2221,6 +2221,36 @@ html[data-theme="dark"] #studio .print{filter:drop-shadow(0 12px 16px rgba(0,0,0
 .ent{position:relative;z-index:3;margin-top:clamp(3rem,6vw,5rem);padding-top:1.2rem;border-top:1.5px solid var(--ink)}
 .ent-k{margin:0 0 .8rem}
 .ent-lede b{font-weight:700;color:#C93A12}
+/* How I work: one dark field holding the steps and the AI note */
+.work-sec{padding-bottom:clamp(4rem,9vw,8rem)}
+.field.f-work{position:relative;z-index:3;margin-top:clamp(2rem,4vw,3rem);padding:clamp(2.2rem,4.4vw,3.2rem) clamp(1.4rem,4.4vw,3.6rem);border-radius:6px;background-color:#0A7C86;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px 180px;background-blend-mode:multiply;color:#FFF6EC;border:3px solid #211C2B;box-shadow:9px 9px 0 #211C2B}
+.field.f-work .principles{margin-top:0;padding-top:0;border-top:0}
+.field.f-work .pr-k{display:none}
+.work-ai{margin-top:clamp(2rem,4vw,3rem);padding-top:clamp(1.6rem,3.4vw,2.6rem);border-top:2px dashed rgba(255,246,236,.55)}
+.ai-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.4fr);gap:clamp(1.6rem,4vw,3.2rem);align-items:center}
+.ai-k{margin:0 0 .6rem;color:#FFD66B;letter-spacing:.16em}
+.ai-n{display:flex;align-items:baseline;gap:.5rem;margin:0;font-family:var(--f-display);line-height:.85;color:#EEFF00}
+.ai-n b{font-weight:400;font-size:clamp(4.4rem,9vw,7.6rem)}
+.ai-n i{font-style:normal;font-family:var(--f-script);font-size:clamp(1.4rem,2.6vw,2rem);color:#F5C46A}
+.ai-cap{margin:.7rem 0 0;max-width:22ch;font-family:var(--f-label);font-size:1rem;line-height:1.4;color:rgba(255,246,236,.85)}
+.ai-tools{list-style:none;margin:1.1rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:.5rem}
+.ai-tools li{padding:.25rem .8rem;border:1.5px solid #211C2B;border-radius:99px;background:#FFD66B;font-family:var(--f-label);font-weight:700;font-size:.85rem;letter-spacing:.04em;color:#211C2B}
+.ai-copy{margin:0;max-width:56ch;font-family:var(--f-label);font-size:clamp(1.05rem,1.45vw,1.2rem);line-height:1.6;color:#FFF6EC;border-left:3px solid #EEFF00;padding-left:clamp(1rem,2.4vw,1.8rem)}
+.ai-copy b{font-weight:700;color:#EEFF00}
+@media (max-width:760px){.ai-grid{grid-template-columns:minmax(0,1fr)}.ai-copy{border-left:0;padding-left:0}}
+/* How I work steps, set on the dark field */
+.field.f-work .principles li:hover,.field.f-work .principles li:focus-visible,.field.f-work .principles li.on{background:rgba(255,255,255,.14);box-shadow:inset 0 0 0 1.5px rgba(238,255,0,.7)}
+.field.f-work .principles li{border-left-color:rgba(255,246,236,.38)}
+.field.f-work .principles h4{color:#EDE6DA!important}
+.field.f-work .principles p{color:#FFE9D6!important}
+.field.f-work .principles li:is(:hover,:focus-visible,.on) h4{color:#EEFF00!important}
+.field.f-work .principles li:is(:hover,:focus-visible,.on) p{color:#FFF6EC!important}
+.field.f-work .principles .hw-n{-webkit-text-stroke-color:#FFD66B!important}
+.field.f-work .pr-track{background:repeating-linear-gradient(90deg,rgba(255,246,236,.55) 0 6px,transparent 6px 11px)}
+.field.f-work .pr-track i,.field.f-work .pr-ul path{background:#EEFF00;stroke:#EEFF00}
+.field.f-work .principles .pi [style*="stroke:#5A5260"]{stroke:#E4DAD0!important}
+.field.f-work .principles .pi [style*="fill:#5A5260"]{fill:#E4DAD0!important}
+
 .ent-ai{margin-top:clamp(2rem,4vw,3rem)}
 .ent-ai .ent-lede{margin-bottom:0}
 .ent-lede{margin:0 0 1.6rem;max-width:60ch;font-family:var(--f-label);font-size:clamp(1.05rem,1.5vw,1.25rem);line-height:1.5;color:var(--ink)}
@@ -2733,12 +2763,22 @@ html[data-theme="dark"] .tl-notes .fp-req{color:#E6D9C8;border-color:rgba(242,13
       <li><h4>Start in the unknown</h4><p>Most of what I lead is 0 to 1. Workflows began as a hackathon idea and went to GA.</p></li>
     </ol>
   </div>
+  </div>
+</section>
 
-  <div class="ent ent-ai" aria-labelledby="ai-t">
-    <p class="caps ent-k" id="ai-t">How I use AI</p>
-    <p class="ent-lede">I design in code, with AI as part of how I normally work. I build in Storybook using Cursor and Claude, and <b>9 of my 11 projects</b> went from idea to working screens this way. That is how Workflows shipped in 25 days and how I built the Tree select component for Circuit. Working prototypes let customers react to something real, and what they say decides what I build next. At staff level I use AI to cover more ground, and I keep the calls on what to build, what to cut and what is ready for customers.</p>
+<!-- =====================================================================
+     HOW I WORK — the steps, and where AI fits
+     ===================================================================== -->
+<section class="sec work-sec" id="how-i-work" aria-labelledby="work-t">
+  <div class="part-head">
+    <div>
+      <p class="reel caps">Part 1, continued</p>
+      <h2 class="display part-title chip stamp" id="work-t">How I Work</h2>
+    </div>
+    <p class="script part-aside">the steps, and where AI fits</p>
   </div>
 
+  <div class="field f-work">
   <div class="principles" id="principles">
     <p class="caps pr-k">How I work</p>
     <div class="pr-track" aria-hidden="true"><i></i></div>
@@ -2773,6 +2813,18 @@ html[data-theme="dark"] .tl-notes .fp-req{color:#E6D9C8;border-color:rgba(242,13
       </li>
     </ol>
   </div>
+
+    <div class="work-ai" aria-labelledby="ai-t">
+    <div class="ai-grid">
+      <div class="ai-stat">
+        <p class="caps ai-k" id="ai-t">How I use AI</p>
+        <p class="ai-n" aria-label="9 of 11 projects"><b>9</b><i>of</i><b>11</b></p>
+        <p class="ai-cap">projects went from idea to working screens with AI</p>
+        <ul class="ai-tools" aria-label="Tools"><li>Cursor</li><li>Claude</li><li>Storybook</li></ul>
+      </div>
+      <p class="ai-copy">I design in code, with AI as part of how I normally work. I build in Storybook using Cursor and Claude, and <b>9 of my 11 projects</b> went from idea to working screens this way. That is how Workflows shipped in 25 days and how I built the Tree select component for Circuit. Working prototypes let customers react to something real, and what they say decides what I build next. At staff level I use AI to cover more ground, and I keep the calls on what to build, what to cut and what is ready for customers.</p>
+    </div>
+    </div>
   </div>
 </section>
 
