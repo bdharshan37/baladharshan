@@ -100,6 +100,7 @@ h1 mark{background:none;color:inherit;position:relative;white-space:nowrap;backg
 .fr .t .go{display:inline-flex;align-items:center;gap:8px;margin-top:26px;background:var(--fg);color:#fff;font-size:14px;padding:11px 20px;border-radius:99px;transition:background .25s,gap .25s}
 .fr:hover .go{background:var(--accent);gap:14px}
 .fr .fi{background:var(--cbg);border-radius:22px;overflow:hidden}
+.more{display:flex;gap:28px;flex-wrap:wrap;padding:28px 0 8px;border-top:1px solid var(--line);font-size:14px}.more a{border-bottom:1px solid var(--fg);padding-bottom:1px;transition:color .2s,border-color .2s}.more a:hover{color:var(--accent);border-color:var(--accent)}
 .fr .fi img{display:block;width:100%;aspect-ratio:1200/860;object-fit:cover;transition:transform .9s cubic-bezier(.2,.8,.2,1)}
 .fr:hover .fi img{transform:scale(1.03)}
 @media(max-width:820px){.fr{grid-template-columns:1fr;gap:24px;padding:40px 0}.fr .fi{order:-1}}
@@ -261,7 +262,9 @@ $('rows').innerHTML=P.work.map(w=>w.detail
   :`<div class="wr plain ${LOGO[w.co]?'hl ':''}rv">${lg(w.co)}<div class="head"><div class="nm"><b>${w.co}</b><span class="rl">${w.role}</span></div><time>${w.when}</time></div><p>${w.line}</p></div>`).join('');
 $('resnav').href=P.resume;$('resnav2').href=P.resume;
 const CO={jumpcloud:'JumpCloud',microsoft:'Microsoft'};
-$('feat').innerHTML=PJ.map(x=>`<a class="fr rv" data-go="${x.name}" href="project-swiss.html?p=${x.slug}"><div class="t"><small>${CO[x.co]} · ${x.area}</small><h3>${x.name}</h3><p>${x.line}</p><div class="m"><b>${x.metric}</b>${x.metricL}</div><span class="go">Explore the project <i style="font-style:normal">→</i></span></div><div class="fi" style="--cbg:${x.bg}"><img src="thumbs/cards/${x.slug}.jpg" alt="${x.name}" loading="lazy"></div></a>`).join('');
+const FEATURED=['workflows','conditional-access','defender'];
+const more=['jumpcloud','microsoft'].map(c=>`<a href="company-swiss.html?c=${c}" data-go="${CO[c]}">All ${CO[c]} projects (${PJ.filter(x=>x.co===c).length}) →</a>`).join('');
+$('feat').innerHTML=FEATURED.map(sl=>PJ.find(x=>x.slug===sl)).map(x=>`<a class="fr rv" data-go="${x.name}" href="project-swiss.html?p=${x.slug}"><div class="t"><small>${CO[x.co]} · ${x.area}</small><h3>${x.name}</h3><p>${x.line}</p><div class="m"><b>${x.metric}</b>${x.metricL}</div><span class="go">Explore the project <i style="font-style:normal">→</i></span></div><div class="fi" style="--cbg:${x.bg}"><img src="thumbs/cards/${x.slug}.jpg" alt="${x.name}" loading="lazy"></div></a>`).join('')+`<div class="more">${more}</div>`;
 
 // ---- impact / principles / method / ai ----
 $('imrows').style.setProperty('--n',P.impact.length);$('imrows').innerHTML=P.impact.map(i=>`<div class="im"><b data-c>${i.n}</b><span>${i.l}<em>${i.s}</em></span></div>`).join('');
