@@ -48,11 +48,11 @@
   const PLAY=[['#00A0FF','M1.337.924a1.486 1.486 0 0 0-.112.568v21.017c0 .217.045.419.124.6l11.155-11.087z'],['#00E676','M13.544 10.989l3.258-3.238L3.45.195a1.466 1.466 0 0 0-.946-.179z'],['#FF3D57','M13.544 13.056l-11 10.933c.298.036.612-.016.906-.183l13.324-7.54z'],['#FFC400','M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.49 1.49 0 0 1 0 2.594z']].map(a=>[a[0],new Path2D(a[1])]);
   const DRAW={
     /* workflow graph */
-    0(){/* one workflow glyph: a source node that splits into two outcomes */
-      o.lineCap='round';o.strokeStyle=INK;o.lineWidth=9;
-      [[70,128,128,128,128,66,182,66],[70,128,128,128,128,190,182,190]].forEach(c=>{o.beginPath();o.moveTo(c[0],c[1]);o.bezierCurveTo(c[2],c[3],c[4],c[5],c[6],c[7]);o.stroke()});
-      o.fillStyle=INK;o.beginPath();o.arc(52,128,28,0,7);o.fill();
-      o.fillStyle=ACC;[[204,66],[204,190]].forEach(n=>{o.beginPath();o.arc(n[0],n[1],26,0,7);o.fill()})},
+    0(){/* one bolt in JumpCloud's colours: a trigger that sets everything off */
+      const bolt=()=>{o.beginPath();o.moveTo(150,18);o.lineTo(66,142);o.lineTo(120,142);o.lineTo(102,238);o.lineTo(192,106);o.lineTo(136,106);o.closePath()};
+      o.lineJoin='round';o.lineWidth=10;
+      o.save();o.translate(12,10);o.fillStyle=o.strokeStyle='#002747';bolt();o.fill();o.stroke();o.restore();
+      o.fillStyle=o.strokeStyle='#40CFCC';bolt();o.fill();o.stroke()},
     /* Slack mark */
     1(){const cols=['#36C5F0','#2EB67D','#ECB22E','#E01E5A'];o.translate(LOG/2,LOG/2);
       cols.forEach((c,i)=>{o.save();o.rotate(i*Math.PI/2);o.fillStyle=c;pill(10,-112,40,100,20);o.fill();o.beginPath();o.arc(-26,-92,20,0,7);o.fill();o.restore()});
@@ -76,7 +76,7 @@
     o.setTransform(1,0,0,1,0,0);o.clearRect(0,0,SZ,SZ);o.setTransform(2,0,0,2,0,0);o.globalCompositeOperation='source-over';DRAW[k]();o.setTransform(1,0,0,1,0,0);
     const d=o.getImageData(0,0,SZ,SZ).data,idx=[];for(let i=0;i<SZ*SZ;i++)if(d[i*4+3]>150)idx.push(i);
     for(let i=0;i<N;i++){const pI=idx[(Math.random()*idx.length)|0],xx=pI%SZ+Math.random()-.5,yy=Math.floor(pI/SZ)+Math.random()-.5;
-      const W6=6.2*(k===1?.78:k===0?.86:1);P[i*3]=(xx-SZ/2)/SZ*W6;P[i*3+1]=-(yy-SZ/2)/SZ*W6;P[i*3+2]=(Math.random()-.5)*.35;
+      const W6=6.2*(k===1?.78:k===0?.9:1);P[i*3]=(xx-SZ/2)/SZ*W6;P[i*3+1]=-(yy-SZ/2)/SZ*W6;P[i*3+2]=(Math.random()-.5)*.35;
       C[i*3]=d[pI*4]/255;C[i*3+1]=d[pI*4+1]/255;C[i*3+2]=d[pI*4+2]/255}
     shapes.push(P);colors.push(C)}
 
