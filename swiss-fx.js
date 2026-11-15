@@ -19,7 +19,7 @@
   const cv=document.getElementById('imcv'),c2=document.getElementById('imcv2');if(!cv||!c2)return;
   const stage=cv.parentElement,rows=[...document.querySelectorAll('#imrows .im')],g=c2.getContext('2d');
   const hudTag=document.getElementById('imtag'),hudN=document.getElementById('imn');
-  const TAGS=['JumpCloud Workflows: one trigger, every action','slack: one card, seven areas','cloud + lock: codes restored','shield: policy at sign-in','2h 45 → 20 min','app store · google play'];
+  const TAGS=['workflows: one trigger, every action','slack: one card, seven areas','cloud + lock: codes restored','shield: policy at sign-in','2h 45 → 20 min','app store · google play'];
   const css=getComputedStyle(document.documentElement),ACC=css.getPropertyValue('--accent').trim()||'#FF3B1F',INK='#0B0B0B',LINE='#E4E4E4',MUT='#737373';
   let age=0,cur=0,vis=false,px=null,py=null,hover=false,W=300,H=300,tx=0,ty=0,mx=0,my=0,lastT=0;
 
@@ -32,7 +32,7 @@
     const best=clamp(Math.round(slidePos),0,nS-1);
     if(best!==cur||!hudTag.textContent){cur=best;ct=0;age=0;rows.forEach((r2,i)=>r2.classList.toggle('act',i===cur));
       hudTag.textContent=TAGS[cur]||'';hudN.textContent='0'+(cur+1)+' / 0'+nS;
-      cv.style.opacity=(cur===4||cur===0)?0:1;c2.style.opacity=(cur===4||cur===0)?1:0}};
+      cv.style.opacity=cur===4?0:1;c2.style.opacity=cur===4?1:0}};
   sizeImx();addEventListener('resize',()=>{sizeImx();pick()});
   addEventListener('scroll',pick,{passive:true});
   stage.addEventListener('pointermove',e=>{const b=stage.getBoundingClientRect();px=e.clientX-b.left;py=e.clientY-b.top;hover=true;tx=px/b.width-.5;ty=py/b.height-.5});
@@ -48,13 +48,11 @@
   const PLAY=[['#00A0FF','M1.337.924a1.486 1.486 0 0 0-.112.568v21.017c0 .217.045.419.124.6l11.155-11.087z'],['#00E676','M13.544 10.989l3.258-3.238L3.45.195a1.466 1.466 0 0 0-.946-.179z'],['#FF3D57','M13.544 13.056l-11 10.933c.298.036.612-.016.906-.183l13.324-7.54z'],['#FFC400','M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.49 1.49 0 0 1 0 2.594z']].map(a=>[a[0],new Path2D(a[1])]);
   const DRAW={
     /* workflow graph */
-    0(){/* minimal: outlined nodes joined by thin lines, labels live on the 2D layer */
-      const arrow=(x,y)=>{o.beginPath();o.moveTo(x-6,y-8);o.lineTo(x+6,y-8);o.lineTo(x,y+2);o.closePath();o.fill()};
-      o.lineCap='round';o.lineJoin='round';o.strokeStyle=INK;o.fillStyle=INK;o.lineWidth=4;
-      o.beginPath();o.moveTo(128,66);o.lineTo(128,98);o.stroke();arrow(128,106);
-      o.beginPath();o.moveTo(128,148);o.lineTo(128,170);o.lineTo(64,170);o.lineTo(64,182);o.moveTo(128,170);o.lineTo(192,170);o.lineTo(192,182);o.stroke();arrow(64,190);arrow(192,190);
-      o.strokeStyle=ACC;o.lineWidth=5;
-      [[78,26,100,40],[78,108,100,40],[14,190,100,40],[142,190,100,40]].forEach(n=>{pill(n[0],n[1],n[2],n[3],10);o.stroke()})},
+    0(){/* one workflow glyph: a source node that splits into two outcomes */
+      o.lineCap='round';o.strokeStyle=INK;o.lineWidth=9;
+      [[70,128,128,128,128,66,182,66],[70,128,128,128,128,190,182,190]].forEach(c=>{o.beginPath();o.moveTo(c[0],c[1]);o.bezierCurveTo(c[2],c[3],c[4],c[5],c[6],c[7]);o.stroke()});
+      o.fillStyle=INK;o.beginPath();o.arc(52,128,28,0,7);o.fill();
+      o.fillStyle=ACC;[[204,66],[204,190]].forEach(n=>{o.beginPath();o.arc(n[0],n[1],26,0,7);o.fill()})},
     /* Slack mark */
     1(){const cols=['#36C5F0','#2EB67D','#ECB22E','#E01E5A'];o.translate(LOG/2,LOG/2);
       cols.forEach((c,i)=>{o.save();o.rotate(i*Math.PI/2);o.fillStyle=c;pill(10,-112,40,100,20);o.fill();o.beginPath();o.arc(-26,-92,20,0,7);o.fill();o.restore()});
@@ -78,7 +76,7 @@
     o.setTransform(1,0,0,1,0,0);o.clearRect(0,0,SZ,SZ);o.setTransform(2,0,0,2,0,0);o.globalCompositeOperation='source-over';DRAW[k]();o.setTransform(1,0,0,1,0,0);
     const d=o.getImageData(0,0,SZ,SZ).data,idx=[];for(let i=0;i<SZ*SZ;i++)if(d[i*4+3]>150)idx.push(i);
     for(let i=0;i<N;i++){const pI=idx[(Math.random()*idx.length)|0],xx=pI%SZ+Math.random()-.5,yy=Math.floor(pI/SZ)+Math.random()-.5;
-      const W6=6.2*(k===1?.78:1);P[i*3]=(xx-SZ/2)/SZ*W6;P[i*3+1]=-(yy-SZ/2)/SZ*W6;P[i*3+2]=(Math.random()-.5)*.35;
+      const W6=6.2*(k===1?.78:k===0?.86:1);P[i*3]=(xx-SZ/2)/SZ*W6;P[i*3+1]=-(yy-SZ/2)/SZ*W6;P[i*3+2]=(Math.random()-.5)*.35;
       C[i*3]=d[pI*4]/255;C[i*3+1]=d[pI*4+1]/255;C[i*3+2]=d[pI*4+2]/255}
     shapes.push(P);colors.push(C)}
 
@@ -125,40 +123,17 @@
     [['Trigger',128,46],['If / else',128,128],['Slack',64,210],['Suspend',192,210]].forEach(l=>{g.fillStyle=INK;g.fillText(l[0],cx+(l[1]-128)*sc,cy+(l[2]-128)*sc)});
     g.globalAlpha=1}
 
-  /* ---------- scene 0: one simple glyph for a workflow ----------
-     A source node splits into two outcomes. A pulse runs along the curves and each outcome lights up. No words. */
-  const dotc=(x,y,r,c)=>{g.beginPath();g.arc(x,y,r,0,7);g.fillStyle=c;g.fill()};
-  const bez=(p0,p1,p2,p3,t)=>{const u=1-t;return [u*u*u*p0[0]+3*u*u*t*p1[0]+3*u*t*t*p2[0]+t*t*t*p3[0],u*u*u*p0[1]+3*u*u*t*p1[1]+3*u*t*t*p2[1]+t*t*t*p3[1]]};
-  function workflow(dt){
-    const P=3.4,T=age%P,r=Math.min(W,H)*.075,cx=W/2,cy=H/2;
-    const A=[cx-W*.26,cy],B=[cx+W*.22,cy-H*.15],C=[cx+W*.22,cy+H*.15];
-    const curve=(E)=>[[A[0]+r,A[1]],[cx-W*.02,A[1]],[cx-W*.02,E[1]],[E[0]-r,E[1]]];
-    const cb=curve(B),cc=curve(C);
-    /* the glyph */
-    [cb,cc].forEach(c=>{g.beginPath();g.moveTo(c[0][0],c[0][1]);g.bezierCurveTo(c[1][0],c[1][1],c[2][0],c[2][1],c[3][0],c[3][1]);g.strokeStyle=INK;g.lineWidth=3;g.lineCap='round';g.stroke()});
-    const run=reduce?1:seg(T,.35,1.6),lit=reduce?1:clamp((T-1.6)/.5)*(1-seg(T,2.9,3.4));
-    const out=(E)=>{if(lit>0){g.globalAlpha=.14*(1-lit*.4);dotc(E[0],E[1],r*(1.5+lit*.5),ACC);g.globalAlpha=1}
-      dotc(E[0],E[1],r,lit>0?ACC:'#fff');g.beginPath();g.arc(E[0],E[1],r,0,7);g.strokeStyle=lit>0?ACC:INK;g.lineWidth=3;g.stroke();
-      if(lit>.5){g.strokeStyle='#fff';g.lineWidth=3;g.lineCap='round';g.lineJoin='round';g.beginPath();g.moveTo(E[0]-r*.4,E[1]);g.lineTo(E[0]-r*.1,E[1]+r*.32);g.lineTo(E[0]+r*.45,E[1]-r*.32);g.stroke()}};
-    out(B);out(C);
-    /* the source */
-    const ping=reduce?0:1-seg(T,0,.55);if(ping>0){g.globalAlpha=.3*ping;dotc(A[0],A[1],r*(1+(1-ping)*1.1),ACC);g.globalAlpha=1}
-    dotc(A[0],A[1],r,INK);dotc(A[0],A[1],r*.34,'#fff');
-    /* the pulse, with a short trail */
-    if(!reduce&&run>0&&run<1)[cb,cc].forEach(c=>{for(let k=6;k>0;k--){const [x,y]=bez(c[0],c[1],c[2],c[3],Math.max(0,run-k*.035));g.globalAlpha=.09*(7-k);dotc(x,y,4*(1-k*.08),ACC)}g.globalAlpha=1;const [x,y]=bez(c[0],c[1],c[2],c[3],run);dotc(x,y,6,ACC);g.globalAlpha=.25;dotc(x,y,12,ACC);g.globalAlpha=1});
-    txt(hover?'again':'hover to run it',W-22,28,MUT,'right',12)}
   function frame(t){
     if(!vis)return;
     const dt=Math.min(.05,(t-lastT)/1000||.016);lastT=t;
     age+=dt;
     if(cur===4){g.clearRect(0,0,W,H);collapse(dt)}
-    else if(cur===0){g.clearRect(0,0,W,H);workflow(dt)}
     else if(renderer){
       const tp=shapes[cur],tc=colors[cur],kp=reduce?1:.07,time=t*.001;
       for(let i=0;i<N*3;i++){pos[i]+=(tp[i]-pos[i])*kp;col[i]+=(tc[i]-col[i])*.1}
       geo.attributes.position.needsUpdate=true;geo.attributes.color.needsUpdate=true;
       mx+=(tx-mx)*.06;my+=(ty-my)*.06;
-      const k2=cur===0?.15:1;group.rotation.y=(mx*.9+(reduce?0:Math.sin(time*.6)*.18))*k2;group.rotation.x=(my*.5+(reduce?0:Math.sin(time*.45)*.06))*k2;
+      const k2=1;group.rotation.y=(mx*.9+(reduce?0:Math.sin(time*.6)*.18))*k2;group.rotation.x=(my*.5+(reduce?0:Math.sin(time*.45)*.06))*k2;
       renderer.render(scene,cam)}
     requestAnimationFrame(frame)}
   pick();requestAnimationFrame(frame);
