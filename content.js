@@ -5,7 +5,7 @@ window.PF = {
   role: "Staff Product Designer",
   company: "JumpCloud",
   email: "dharshan37@outlook.com",
-  resume: "Baladharshan-Resume-2026.pdf",
+  resume: "Baladharshan-Resume-2026-Lite.pdf",
   studio: { name: "Bangalore66", url: "https://bangalore66.framer.website", line: "Photography studio. Shoots for pets, products, fashion and food." },
   intro: "I make admin software feel like a quiet Tuesday.",
   sub: "I'm a Staff Product Designer at JumpCloud. I lead design across access, devices and Workflows.",
