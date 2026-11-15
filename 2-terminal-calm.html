@@ -1,0 +1,214 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Baladharshan — Staff Product Designer</title>
+<meta name="description" content="Staff product designer at JumpCloud. Enterprise software, design systems, and designing in code.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400&family=Noto+Sans+Tamil&family=Noto+Sans+Telugu&family=Noto+Sans+Devanagari&family=Noto+Sans+Kannada&family=Noto+Sans+Malayalam&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+:root{--bg:#15171A;--fg:#D7D9DC;--muted:#868B93;--line:#2A2D32;--accent:#F2B35E;--ui:'IBM Plex Sans',system-ui,sans-serif;--mono:'IBM Plex Mono',ui-monospace,monospace;--wipe-bg:#0E0F11;--wipe-fg:var(--accent)}
+::selection{background:var(--accent);color:#15171A}
+main{max-width:620px;margin:0 auto;padding:80px 20px 140px}
+#boot{font:13px/1.9 var(--mono);color:var(--muted);min-height:120px}
+#boot .ok{color:var(--accent)}
+#page{opacity:0;transition:opacity .8s}#page.on{opacity:1}
+.wipe{border-top:2px solid var(--accent)}
+.wipe span:before{content:"$ cd ./";color:var(--muted)}.wipe span:after{content:"…"}
+/* status bar */
+.status{position:sticky;top:0;background:var(--bg);font:12px var(--mono);color:var(--muted);padding:12px 0;border-bottom:1px solid var(--line);margin:-80px 0 56px;z-index:5;display:flex;justify-content:space-between;gap:12px}
+.status b{color:var(--accent);font-weight:400}
+.status .r{display:flex;gap:14px}
+/* hero */
+#hero{position:relative;outline:0}
+h1{font:400 21px/1.45 var(--ui);color:#F1F2F3}
+.sub{margin-top:14px;font-size:15px;line-height:1.65;color:var(--muted)}
+.now{margin-top:22px;font:12px var(--mono);color:var(--muted);display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.now i{width:7px;height:7px;border-radius:50%;background:#7EE08A;box-shadow:0 0 0 0 #7EE08A88;animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 7px #7EE08A00}}
+.now .tip{color:var(--accent);opacity:.8}
+#pxwrap{position:absolute;left:calc(100% + 28px);top:-6px;width:204px;pointer-events:none}
+#px{width:204px;height:240px;image-rendering:pixelated;display:block;opacity:0}#px.on{opacity:1}
+#pxcap{font:11px var(--mono);color:var(--muted);margin-top:8px;min-height:14px}
+@media(max-width:1060px){#pxwrap{left:auto;right:0;top:-96px;width:76px}#px{width:76px;height:90px}#pxcap{display:none}}
+/* sections */
+.prompt{font:13px var(--mono);color:var(--accent);margin:72px 0 14px;min-height:18px}.prompt:before{content:"$ ";color:var(--muted)}
+.prompt .cur{display:inline-block;width:7px;height:13px;background:var(--accent);vertical-align:-2px;margin-left:2px;animation:bl 1s steps(1) infinite}
+@keyframes bl{50%{opacity:0}}
+.row{padding:14px 0;border-top:1px solid var(--line)}
+.row .head{display:flex;justify-content:space-between;gap:16px;align-items:baseline}
+.row h3{font:400 14px var(--mono)}.row h3 b{font-weight:400;color:var(--accent);margin-right:10px}
+.row time{font:12px var(--mono);color:var(--muted)}
+.row p{font-size:14px;color:var(--muted);margin-top:2px}
+.row.lnk .head:hover h3:before{content:"> ";color:var(--accent);margin-left:-16px}
+.row.lnk .tog{font-style:normal;transition:transform .2s;color:var(--accent);display:inline-block}.row.lnk .head:hover .tog{transform:translateX(4px)}
+.kv{display:grid;grid-template-columns:92px 1fr;gap:10px 16px;font-size:14px}
+.kv b{font:400 15px var(--mono);color:var(--accent)}.kv span{color:var(--muted)}.kv em{font-style:normal;opacity:.6}
+/* workflow canvas */
+.flow{position:relative;padding-left:30px}
+.flow:before{content:"";position:absolute;left:9px;top:10px;bottom:10px;width:1px;background:var(--line)}
+.flow .fill{position:absolute;left:9px;top:10px;width:1px;background:var(--accent);height:0;transition:height 3.2s linear}
+.node{position:relative;border:1px solid var(--line);background:#181B1F;padding:12px 14px;margin-bottom:14px;transition:border-color .3s,background .3s}
+.node:before{content:"";position:absolute;left:-26px;top:16px;width:11px;height:11px;border:1px solid var(--line);background:var(--bg);transition:all .3s}
+.node .tag{font:10px var(--mono);letter-spacing:.1em;color:var(--muted);display:flex;justify-content:space-between}
+.node .st{color:var(--muted)}
+.node h4{font:400 15px var(--ui);margin:6px 0 2px;color:#F1F2F3}
+.node p{font-size:13px;color:var(--muted);line-height:1.5}
+.node.run{border-color:var(--accent)}.node.run:before{border-color:var(--accent);background:var(--accent);box-shadow:0 0 12px var(--accent)}
+.node.run .st{color:var(--accent)}
+.node.ok{border-color:#3a3f46}.node.ok:before{border-color:var(--accent);background:var(--accent)}.node.ok .st{color:var(--accent)}
+/* principles */
+.pr{display:grid;grid-template-columns:28px 1fr;gap:4px 8px;padding:12px 0;border-top:1px solid var(--line)}
+.pr i{font:12px var(--mono);color:var(--accent);font-style:normal;padding-top:3px}.pr h4{font:400 15px var(--ui);color:#F1F2F3}.pr p{grid-column:2;font-size:14px;color:var(--muted);line-height:1.55}
+/* ai */
+.ai .cells{display:flex;gap:4px;margin:6px 0 14px}
+.ai .cells span{flex:1;height:22px;background:#202328;transition:background .25s,transform .25s}
+.ai .cells span.f{background:var(--accent);transform:scaleY(1)}
+.ai .big{font:400 36px var(--mono);color:#F1F2F3}.ai .big small{font-size:14px;color:var(--muted);margin-left:8px}
+.ai p{font-size:14px;line-height:1.65;color:var(--muted);margin-top:10px}
+.chips{display:flex;gap:8px;margin-top:14px}.chips span{font:12px var(--mono);border:1px solid var(--line);padding:3px 10px;color:var(--accent)}
+/* work lab: scroll-scrubbed scenes */
+.wl{display:grid;gap:36px;margin:8px 0 0}
+.wl-in{border:1px solid var(--line);padding:14px 14px 12px;background:var(--bg)}
+.wl-h{display:flex;justify-content:space-between;font:12px var(--mono);color:var(--muted);margin-bottom:10px}.wl-h .t{color:var(--accent)}
+.wl-in canvas{display:block;width:100%;height:330px}
+.wl-log{font:12px/1.7 var(--mono);color:var(--muted);margin-top:10px;min-height:64px;border-top:1px solid var(--line);padding-top:8px}.wl-log i{color:var(--accent);font-style:normal;margin-right:8px}.wl-log b{color:var(--accent);font-weight:400}
+.wl-hint{font:11px var(--mono);color:var(--muted);margin-top:4px}
+/* photos */
+.ph{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.ph img{width:100%;aspect-ratio:1;object-fit:cover;background:#1c1f23;display:block;transition:transform .25s,outline-color .2s;outline:1px solid transparent;outline-offset:2px}
+.ph img:hover,.ph img:focus-visible{transform:scale(1.04);outline-color:var(--accent)}
+#phcap{font:12px var(--mono);color:var(--muted);margin-top:12px;min-height:18px}
+.ph-link{font:12px var(--mono);color:var(--accent);margin-top:6px;display:inline-block}
+@media(max-width:480px){.ph{grid-template-columns:repeat(2,1fr)}}
+/* gate + terminal */
+.gate{background:#1A1D21}
+.term{font:13px/1.8 var(--mono);color:var(--muted);border:1px solid var(--line);padding:14px 16px;background:#121417;cursor:text}
+#tout div{white-space:pre-wrap}#tout .c{color:var(--fg)}#tout .a{color:var(--accent)}
+.tin{display:flex;gap:8px;color:var(--accent)}.tin input{flex:1;background:none;border:0;color:var(--fg);font:inherit;outline:0;caret-color:var(--accent)}
+.mailrow{font:13px/1.9 var(--mono);color:var(--muted);margin-top:18px}.mailrow a{color:var(--accent)}
+.thx{font:400 44px/1.2 var(--ui);color:#F1F2F3;margin-top:80px;min-height:56px}
+.thx small{display:block;font:12px var(--mono);color:var(--muted);margin-top:8px}
+footer{margin-top:32px;font:12px var(--mono);color:var(--muted)}
+.hint b{color:#15171A}
+</style></head><body>
+<main>
+<div id="boot"></div>
+<div id="page">
+  <div class="status"><span>~/baladharshan<b id="cur"></b></span><span class="r"><span id="clk"></span><span id="pct">0%</span></span></div>
+  <div id="hero" tabindex="0" aria-label="Hover to load a portrait">
+    <div data-drift="-0.1" data-fade="1"><h1 id="h"></h1></div><p class="sub" id="sub"></p>
+    <div class="now"><i></i><span>Bangalore</span><span>·</span><span>open to conversations</span><span class="tip">↗ hover to load portrait.png</span></div>
+    <div id="pxwrap" aria-hidden="true"><canvas id="px" width="272" height="320"></canvas><div id="pxcap"></div></div>
+  </div>
+  <div class="prompt" id="work">ls ./work</div><div id="rows"></div>
+  <div class="prompt" id="impact">cat impact.log</div><div class="kv" id="kv"></div>
+  <div class="prompt" id="lab">ls ./work-lab</div>
+  <div class="wl" id="labs"></div>
+  <div class="prompt" id="how">workflow run how-i-work</div><div class="flow" id="flow"><div class="fill"></div></div>
+  <div class="prompt" id="beliefs">cat principles.md</div><div id="pr"></div>
+  <div class="prompt" id="ai">claude --design-in-code</div>
+  <div class="ai" id="aib"><div class="big"><span id="aicount">0</span>/<span id="aitot"></span><small>projects went from idea to working screens with AI</small></div><div class="cells" id="cells"></div><p id="aitext"></p><div class="chips" id="chips"></div></div>
+  <div class="prompt" id="after">ls ./after-hours</div>
+  <div class="ph" id="ph"></div><div id="phcap">Hover a frame, click to open it. When I'm not designing, I shoot at Bangalore66.</div><a class="ph-link" id="stu" target="_blank" rel="noopener"></a>
+  <div class="prompt" id="deck">access --deck</div>
+  <div class="gate"><div><small>🔒 Password protected</small><h3>Selected work &amp; career story</h3><p>An interactive deck on how I think, design and solve problems.</p>
+  <form><input type="password" placeholder="password" aria-label="Password"><button>unlock →</button></form><div class="err"></div></div></div>
+  <div class="prompt" id="contact">sudo ./contact</div>
+  <div class="term" id="term"><div id="tout"></div><label class="tin">$<input id="tcmd" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Terminal command" placeholder="type help"></label></div>
+  <div class="mailrow">mail <a id="mail"></a><br>resume <a id="res" target="_blank">pdf ↗</a></div>
+  <div class="thx" id="thx"></div>
+  <footer>Thank you for scrolling · © 2026 Baladharshan</footer>
+</div></main>
+<script src="content.js"></script><script src="shared.js"></script><script src="pixel-portrait.js"></script>
+<script>
+const P=PF,$=id=>document.getElementById(id),reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const THEMES={amber:'#F2B35E',green:'#7EE08A',pink:'#FF8FB1'};
+const setTheme=n=>{if(!THEMES[n])return false;document.documentElement.style.setProperty('--accent',THEMES[n]);store.set('pf-theme',n);return true};
+setTheme(store.get('pf-theme','amber'));
+pageWipe();
+// ---- content ----
+$('rows').innerHTML=P.work.map(w=>w.detail
+  ?`<div class="row lnk"><a class="head" data-go="${w.detail.slug}" href="company-terminal.html?c=${w.detail.slug}"><h3><b>${w.co}</b>${w.role} <i class="tog">→</i></h3><time>${w.when}</time></a><p>${w.line}</p></div>`
+  :`<div class="row"><div class="head"><h3><b>${w.co}</b>${w.role}</h3><time>${w.when}</time></div><p>${w.line}</p></div>`).join('');
+$('kv').innerHTML=P.impact.map(i=>`<b>${i.n}</b><span>${i.l} <em>· ${i.s}</em></span>`).join('');
+const NODES=[['TRIGGER','Frame the problem',P.how[0][1],'0.4s'],['ACTION','Prototype in code',P.how[1][1],'1.2s'],['ACTION','Build on tokens',P.how[2][1],'0.8s'],['CONDITION','Align early',P.how[3][1],'0.3s'],['RESULT','Ship',"Customers react to something real. What they say decides what I build next.",'✓']];
+$('flow').insertAdjacentHTML('beforeend',NODES.map(n=>`<div class="node"><div class="tag"><span>${n[0]}</span><span class="st">queued</span></div><h4>${n[1]}</h4><p>${n[2]}</p></div>`).join(''));
+$('pr').innerHTML=P.principles.map((p,i)=>`<div class="pr"><i>0${i+1}</i><h4>${p[0]}</h4><p>${p[1]}</p></div>`).join('');
+$('aitot').textContent=P.ai.total;$('aitext').textContent=P.ai.text;
+$('cells').innerHTML=Array.from({length:P.ai.total},()=>'<span></span>').join('');
+$('chips').innerHTML=P.ai.tools.map(t=>`<span>${t}</span>`).join('');
+$('ph').innerHTML=P.photos.map((p,i)=>`<img src="${p.src}" data-src="${p.src}" data-cap="${p.cap}" data-i="${i}" alt="${p.cap}" loading="lazy">`).join('');
+$('stu').textContent='→ '+P.studio.name+' studio';$('stu').href=P.studio.url;
+$('h').textContent=P.intro;$('sub').textContent=P.sub;
+$('mail').textContent=P.email;$('mail').href='mailto:'+P.email;$('res').href=P.resume;
+clock($('clk'));thanksLoop($('thx'));$('thx').classList.add('thx');
+$('thx').insertAdjacentHTML('afterend','');
+gate(document.querySelector('.gate'));
+// ---- 8-bit portrait on hover ----
+pixelPortrait({src:'img/portrait.jpg',canvas:$('px'),caption:$('pxcap'),hover:$('hero'),crop:{x:330,y:140,w:694,h:817}});
+// ---- photo contact sheet: each frame resolves from pixels when it scrolls in ----
+lightbox('#ph img');
+document.querySelectorAll('#ph img').forEach(c=>{
+  const p=P.photos[c.dataset.i];
+  c.onmouseenter=()=>$('phcap').textContent=p.cap;c.onmouseleave=()=>$('phcap').textContent="Hover a frame, click to open it. When I'm not designing, I shoot at Bangalore66.";
+});
+// ---- workflow run: nodes execute one after another ----
+let ran=false;
+new IntersectionObserver((es,io)=>es.forEach(e=>{if(!e.isIntersecting||ran)return;ran=true;io.disconnect();
+  const ns=[...document.querySelectorAll('.node')],fill=document.querySelector('.fill');
+  fill.style.height=(document.getElementById('flow').offsetHeight-20)+'px';
+  ns.forEach((n,i)=>{const t=reduce?0:i*650;
+    setTimeout(()=>{n.classList.add('run');n.querySelector('.st').textContent='running…'},t);
+    setTimeout(()=>{n.classList.replace('run','ok');n.querySelector('.st').textContent=NODES[i][3]==='✓'?'✓ done':'✓ '+NODES[i][3]},t+(reduce?0:520))});
+}),{threshold:.25}).observe($('flow'));
+// ---- AI cells fill + counter ----
+let aid=false;
+new IntersectionObserver((es,io)=>es.forEach(e=>{if(!e.isIntersecting||aid)return;aid=true;io.disconnect();
+  [...document.querySelectorAll('#cells span')].slice(0,P.ai.done).forEach((c,i)=>setTimeout(()=>{c.classList.add('f');$('aicount').textContent=i+1},reduce?0:i*110))}),{threshold:.5}).observe($('aib'));
+// ---- scroll behaviours ----
+progress();drift();countUps('.kv b');
+const names={work:'/work',impact:'/impact',how:'/how',beliefs:'/principles',ai:'/ai',after:'/after-hours',deck:'/deck',contact:'/contact'};
+spy(Object.keys(names),id=>$('cur').textContent=id?names[id]:'');
+addEventListener('scroll',()=>{const h=document.documentElement;$('pct').textContent=Math.round(scrollY/(h.scrollHeight-innerHeight||1)*100)+'%'},{passive:true});
+document.querySelectorAll('.prompt').forEach(p=>{p.dataset.t=p.textContent;p.textContent=''});
+document.querySelectorAll('.row,.kv>*,.pr,.gate,.ph img,.mailrow,.term').forEach(e=>e.classList.add('rv'));
+const typeIO=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;typeIO.unobserve(e.target);const el=e.target,t=el.dataset.t;let i=0;
+  const tk=()=>{i++;el.innerHTML=t.slice(0,i)+'<span class="cur"></span>';if(i<t.length)setTimeout(tk,reduce?0:32)};tk()}),{threshold:1});
+document.querySelectorAll('.prompt').forEach(p=>typeIO.observe(p));
+// ---- interactive terminal ----
+const out=$('tout'),inp=$('tcmd'),hist=[];let hi=0;
+const say=(t,c)=>{const d=document.createElement('div');if(c)d.className=c;d.innerHTML=t;out.append(d)};
+const go=(href,label)=>{const a=document.createElement('a');a.href=href;a.dataset.go=label;a.style.display='none';document.body.append(a);a.click()};
+const CMDS={
+  help:()=>say('commands: <span class="a">whoami  work  impact  principles  photos  jumpcloud  microsoft  resume  mail  theme  thanks  clear</span>\ntry <span class="a">sudo hire-me</span>'),
+  whoami:()=>say(P.full+' — '+P.role+' at '+P.company+'. '+P.sub),
+  ls:()=>say('work/  impact.log  principles.md  after-hours/  deck/','a'),
+  work:()=>{say('JumpCloud, Microsoft, Pramati Technologies, Cognizant. Scrolling you there.');$('work').scrollIntoView({behavior:'smooth'})},
+  impact:()=>{P.impact.forEach(i=>say(i.n.padEnd(8)+i.l+' <span style="opacity:.6">· '+i.s+'</span>'));},
+  principles:()=>P.principles.forEach((p,i)=>say('0'+(i+1)+' '+p[0])),
+  photos:()=>{say('developing film…');$('after').scrollIntoView({behavior:'smooth'})},
+  jumpcloud:()=>{say('cd ./jumpcloud');setTimeout(()=>go('company-terminal.html?c=jumpcloud','jumpcloud'),300)},
+  microsoft:()=>{say('cd ./microsoft');setTimeout(()=>go('company-terminal.html?c=microsoft','microsoft'),300)},
+  resume:()=>{say('opening resume.pdf');window.open(P.resume,'_blank')},
+  mail:()=>{say('opening mail client…');location.href='mailto:'+P.email},
+  thanks:()=>say(P.thanks.join('  ·  '),'a'),
+  clear:()=>{out.innerHTML=''},
+  theme:a=>{if(!a){say('themes: '+Object.keys(THEMES).join(', ')+'. usage: <span class="a">theme green</span>');return}say(setTheme(a)?'theme set to '+a:'unknown theme: '+a)},
+  'sudo hire-me':()=>{say('[sudo] password for recruiter: ********','c');say('permission granted. when can you start?','a');setTimeout(()=>location.href='mailto:'+P.email+'?subject=Let%27s%20talk',900)}
+};
+$('term').addEventListener('click',()=>inp.focus());
+inp.addEventListener('keydown',e=>{
+  e.stopPropagation();
+  if(e.key==='Enter'){const v=inp.value.trim();inp.value='';if(!v)return;hist.push(v);hi=hist.length;say('$ '+v,'c');
+    const [c,...r]=v.split(/\s+/);const full=v.toLowerCase();
+    (CMDS[full]||CMDS[c.toLowerCase()]||(()=>say('command not found: '+c+'. try <span class="a">help</span>')))(r.join(' '))}
+  else if(e.key==='ArrowUp'){e.preventDefault();if(hi>0)inp.value=hist[--hi]}
+  else if(e.key==='ArrowDown'){e.preventDefault();inp.value=hist[++hi]||'';}
+});
+say('Type <span class="a">help</span> to see what this terminal can do.');
+// ---- palette ----
+palette([{l:'ls ./work',h:'§',go:jump('work')},{l:'cat impact.log',h:'§',go:jump('impact')},{l:'how i work',h:'§',go:jump('how')},{l:'after hours',h:'§',go:jump('after')},{l:'access --deck',h:'🔒',go:jump('deck')},{l:'JumpCloud',h:'→',go:()=>go('company-terminal.html?c=jumpcloud','jumpcloud')},{l:'Microsoft',h:'→',go:()=>go('company-terminal.html?c=microsoft','microsoft')},{l:'contact',h:'§',go:jump('contact')}]);
+// ---- boot sequence ----
+const lines=['resolving profile','loading work (4)','compiling impact','mounting portrait.png'];const b=$('boot');
+let n=0;const step=()=>{if(n<lines.length){b.innerHTML+=`${lines[n]}… <span class="ok">ok</span><br>`;n++;setTimeout(step,reduce?0:340)}else{setTimeout(()=>{b.remove();$('page').classList.add('on');reveal()},reduce?0:300)}};
+step();
+</script><script src="lab.js"></script></body></html>

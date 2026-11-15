@@ -1,0 +1,80 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Baladharshan — Work</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+:root{--bg:#15171A;--fg:#D7D9DC;--muted:#868B93;--line:#2A2D32;--accent:#F2B35E;--ui:'IBM Plex Sans',system-ui,sans-serif;--mono:'IBM Plex Mono',ui-monospace,monospace}
+main{max-width:620px;margin:0 auto;padding:80px 20px 120px}
+.status{position:sticky;top:0;background:var(--bg);font:12px var(--mono);color:var(--muted);padding:12px 0;border-bottom:1px solid var(--line);margin:-80px 0 56px;z-index:5;display:flex;justify-content:space-between}
+.status b{color:var(--accent);font-weight:400}
+.status a:hover{color:var(--accent)}
+.wipe{--wipe-bg:#0E0F11;--wipe-fg:var(--accent);border-top:2px solid var(--accent)}.wipe span:before{content:"$ cd ./";color:var(--muted)}.wipe span:after{content:"…"}
+.proj img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;background:var(--line);border:1px solid var(--line);transition:border-color .2s}
+.proj img:hover,.proj img:focus-visible{border-color:var(--accent);outline:none}
+.back{font:13px var(--mono);color:var(--muted);display:inline-block;margin-bottom:32px}.back:hover{color:var(--accent)}
+h1{font:400 28px/1.2 var(--ui);color:#F1F2F3}
+.meta{font:13px var(--mono);color:var(--muted);margin-top:8px}.meta b{color:var(--accent);font-weight:400}
+.sum{margin-top:22px;font-size:16px;line-height:1.7;color:#B6BAC0}
+.prompt{font:13px var(--mono);color:var(--accent);margin:60px 0 14px}.prompt:before{content:"$ ";color:var(--muted)}
+.prompt .cur{display:inline-block;width:7px;height:13px;background:var(--accent);vertical-align:-2px;margin-left:2px;animation:bl 1s steps(1) infinite}
+@keyframes bl{50%{opacity:0}}
+.kv{display:grid;grid-template-columns:92px 1fr;gap:10px 16px;font-size:14px}
+.kv b{font:400 15px var(--mono);color:var(--accent)}.kv span{color:var(--muted)}
+ul.did{list-style:none;font-size:14px;line-height:1.6;color:var(--muted)}
+ul.did li{padding:10px 0;border-top:1px solid var(--line)}ul.did li:before{content:"- ";color:var(--accent);font-family:var(--mono)}
+.proj{display:flex;flex-direction:column-reverse;gap:14px;padding:28px 0 32px;border-top:1px solid var(--line)}
+.proj img{width:100%;aspect-ratio:3/2;object-fit:cover;display:block;background:var(--line);border:1px solid var(--line)}
+.proj h3{font:400 16px var(--mono);color:var(--fg)}
+.proj .m{font:12px var(--mono);color:var(--accent);margin:2px 0 6px}
+.proj p{font-size:14px;line-height:1.65;color:var(--muted)}
+.proj .tx{display:block}
+.next{display:flex;justify-content:space-between;margin-top:72px;padding-top:20px;border-top:1px solid var(--line);font:13px var(--mono)}
+.next a{color:var(--muted)}.next a:hover{color:var(--accent)}
+footer{margin-top:40px;font:13px/1.8 var(--mono);color:var(--muted)}footer a{color:var(--accent)}
+.hint b{color:#15171A}
+
+</style></head><body>
+<main>
+  <div class="status"><span>~/baladharshan/work<b id="cur"></b></span><span id="pct">0%</span></div>
+  <a class="back" data-go=".." href="2-terminal-calm.html#work">cd ..</a>
+  <div data-drift="-0.08" data-fade="1"><h1 id="h"></h1><div class="meta" id="meta"></div></div>
+  <p class="sum rv" id="sum"></p>
+  <div class="prompt" id="impact">cat impact.log</div><div class="kv" id="kv"></div>
+  <div class="prompt" id="did">./what-i-did</div><ul class="did" id="didl"></ul>
+  <div class="prompt" id="projects">ls ./projects</div><div id="pl"></div>
+  <div class="next" id="next"></div>
+  <footer>mail <a id="mail"></a><br>© 2026 Baladharshan</footer>
+</main>
+<script src="content.js"></script><script src="shared.js"></script><script src="pixel-portrait.js"></script>
+<script>
+const P=PF,$=id=>document.getElementById(id);
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const list=P.work.filter(w=>w.detail),slug=new URLSearchParams(location.search).get('c');
+let idx=list.findIndex(w=>w.detail.slug===slug);if(idx<0)idx=0;
+const w=list[idx],d=w.detail;
+document.title=w.co+' — Baladharshan';
+document.documentElement.style.setProperty('--accent',d.accent);
+$('h').textContent=w.co;
+$('meta').innerHTML=`<b>${w.role}</b> · ${w.when}`;
+$('sum').textContent=d.summary;
+$('kv').innerHTML=d.impact.map(i=>`<b>${i.n}</b><span>${i.l}${i.est?' <em>(est.)</em>':''}</span>`).join('');
+$('didl').innerHTML=d.did.map(t=>`<li>${t}</li>`).join('');
+$('pl').innerHTML=d.projects.map(p=>`<div class="proj"><img src="${p.thumb||p.img}" data-src="${p.img}" data-cap="${p.t} — ${p.m}" alt="${p.t}" loading="lazy"><div><h3>${p.t}</h3><div class="m">${p.m}</div><p>${p.d}</p></div></div>`).join('');
+const o=list[(idx+1)%list.length];
+$('next').innerHTML=`<a data-go=".." href="2-terminal-calm.html#work">← all work</a>`+(list.length>1?`<a data-go="${o.detail.slug}" href="company-terminal.html?c=${o.detail.slug}">next: ${o.co} →</a>`:'');
+$('mail').textContent=P.email;$('mail').href='mailto:'+P.email;
+pageWipe();
+lightbox('.proj img');
+progress();drift();countUps('.kv b');
+addEventListener('scroll',()=>{const h=document.documentElement;$('pct').textContent=Math.round(scrollY/(h.scrollHeight-innerHeight||1)*100)+'%'},{passive:true});
+const names={impact:'/impact',did:'/what-i-did',projects:'/projects'};
+spy(Object.keys(names),id=>$('cur').textContent='/'+slug.replace(/[^a-z]/g,'')+(id?names[id]:''));
+document.querySelectorAll('.prompt').forEach(p=>{p.dataset.t=p.textContent;p.textContent=''});
+document.querySelectorAll('.kv>*,.did li,.proj,.next').forEach(e=>e.classList.add('rv'));
+const typeIO=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;typeIO.unobserve(e.target);const el=e.target,t=el.dataset.t;let i=0;
+  const tk=()=>{i++;el.innerHTML=t.slice(0,i)+'<span class="cur"></span>';if(i<t.length)setTimeout(tk,reduce?0:35)};tk()}),{threshold:1});
+document.querySelectorAll('.prompt').forEach(p=>typeIO.observe(p));
+reveal();
+palette([{l:'All work',h:'←',go:()=>location.href='2-terminal-calm.html#work'},{l:'Impact',h:'§',go:jump('impact')},{l:'Projects',h:'§',go:jump('projects')}].concat(list.map(x=>({l:x.co,h:'→',go:()=>location.href='company-terminal.html?c='+x.detail.slug}))));
+</script></body></html>

@@ -1,0 +1,48 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Project cards</title>
+<style>
+/* One 1200x860 card per project (exported at 2x): a calm coloured field and real screens, no text.
+   Every screenshot is shown at no more than ~1.3x its pixel size at 2x, so nothing is upscaled into blur. */
+*{box-sizing:border-box;margin:0}html,body{background:#fff}
+.c{display:none;width:1200px;height:860px;position:relative;overflow:hidden}.c:target{display:block}
+.s{position:absolute;border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 36px 80px rgba(20,30,50,.2),0 0 0 1px rgba(0,0,0,.06)}
+.s img{display:block;width:100%;height:100%}
+.p{border-radius:34px}
+</style></head><body>
+<!-- Workflows: the builder, and the full run-history screen (uncropped) -->
+<section class="c" id="workflows" style="background:linear-gradient(135deg,#CBE6E0,#E6F4F1)">
+  <div class="s" style="left:60px;top:96px;width:880px;height:571px"><img src="../img/jc-flows.jpg"></div>
+  <div class="s" style="right:56px;bottom:64px;width:640px;height:436px"><img src="../img/wf-history.jpg"></div>
+</section>
+<section class="c" id="slack" style="background:linear-gradient(135deg,#E8D8EC,#F4EBF6)">
+  <div class="s" style="left:56px;top:84px;width:980px;height:666px;background:transparent;box-shadow:none"><img src="../img/sl-ar-1.png" style="filter:drop-shadow(0 34px 60px rgba(60,20,70,.3))"></div>
+  <div class="s" style="right:40px;bottom:36px;width:640px;height:435px;background:transparent;box-shadow:none"><img src="../img/sl-alerts.png" style="filter:drop-shadow(0 26px 44px rgba(60,20,70,.32))"></div>
+</section>
+<section class="c" id="ai-assistant" style="background:linear-gradient(135deg,#DDD6F5,#EEEAFB)">
+  <div class="s" style="right:56px;top:84px;width:820px;height:533px"><img src="../img/cap-draft-assign.jpg"></div>
+  <div class="s" style="left:56px;bottom:60px;width:640px;height:416px"><img src="../img/cap-prompt.jpg"></div>
+</section>
+<!-- Protect: three moments of the flow, phones at ~1.3x their pixels -->
+<section class="c" id="protect" style="background:linear-gradient(135deg,#C9E8E3,#E3F3F0)">
+  <div class="s p" style="left:132px;top:150px;width:262px;height:570px"><img src="../img/pr-nudge-app.jpg"></div>
+  <div class="s p" style="left:468px;top:110px;width:262px;height:570px"><img src="../img/pr-signin.jpg"></div>
+  <div class="s p" style="left:804px;top:150px;width:262px;height:570px"><img src="../img/pr-key.jpg"></div>
+</section>
+<section class="c" id="conditional-access" style="background:linear-gradient(135deg,#D3E0F7,#E9F0FC)">
+  <div class="s" style="left:56px;top:84px;width:800px;height:520px"><img src="../img/cap-approve.jpg"></div>
+  <div class="s" style="right:48px;bottom:52px;width:560px;height:364px"><img src="../img/cap-draft.jpg"></div>
+</section>
+<section class="c" id="circuit" style="background:linear-gradient(135deg,#E2E2DE,#F2F2EF)">
+  <div class="s" style="left:64px;top:110px;width:880px;height:482px"><img src="../img/ts-rows.png"></div>
+  <div class="s" style="right:64px;top:170px;width:360px;height:560px"><img src="../img/ts-panel.png"></div>
+</section>
+<section class="c" id="defender" style="background:linear-gradient(135deg,#D5DEF7,#EAF0FD)">
+  <div class="s p" style="left:96px;top:120px;width:270px;height:584px"><img src="../img/defender-ios-1.jpg"></div>
+  <div class="s p" style="left:420px;top:90px;width:330px;height:587px"><img src="../img/defender-android-2.jpg"></div>
+  <div class="s p" style="left:804px;top:120px;width:270px;height:584px"><img src="../img/defender-ios-2.jpg"></div>
+</section>
+<section class="c" id="mobile-framework" style="background:linear-gradient(135deg,#CDEBE2,#E5F5EF)">
+  <div class="s p" style="left:96px;top:90px;width:330px;height:587px"><img src="../img/defender-android-1.jpg"></div>
+  <div class="s p" style="left:470px;top:120px;width:270px;height:584px"><img src="../img/defender-ios-3.jpg"></div>
+  <div class="s p" style="left:804px;top:90px;width:270px;height:584px"><img src="../img/defender-ios-2.jpg"></div>
+</section>
+</body></html>
