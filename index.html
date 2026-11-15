@@ -77,7 +77,7 @@ h1 mark{background:none;color:inherit;position:relative;white-space:nowrap;backg
 .ringing .cline,.live .cline{color:var(--fg)}.ringing .cline .ring{fill:var(--accent);animation:rg .5s infinite}.live .cline .ring{fill:var(--accent)}
 @keyframes rg{0%,100%{transform:rotate(-14deg)}50%{transform:rotate(14deg)}}
 .conn{overflow:hidden;max-height:0;transition:max-height 1s cubic-bezier(.2,.8,.2,1)}.conn.on{max-height:760px}
-.connin{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;padding-top:44px;margin-top:40px;border-top:1px solid var(--fg)}
+.connin{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;padding-top:12px;margin-top:32px}
 .connin small{display:block;font-size:13px;color:var(--muted);margin-bottom:14px}
 .agenda ol{list-style:none}.agenda li{display:grid;grid-template-columns:34px 1fr;padding:13px 0;border-bottom:1px solid var(--line);align-items:baseline}
 .agenda li i{font:12px var(--mono);font-style:normal;color:var(--accent)}.agenda li b{font-weight:500;font-size:17px;letter-spacing:-.02em}
@@ -90,7 +90,7 @@ h1 mark{background:none;color:inherit;position:relative;white-space:nowrap;backg
 /* nav + featured work */
 .top .r a{color:var(--fg);transition:color .2s}.top .r a:hover{color:var(--accent)}
 .sel{margin-top:120px}
-.sel-h{font-size:13px;color:var(--muted);border-top:1px solid var(--fg);padding-top:20px;margin-bottom:8px}
+.sel-h{font-size:13px;color:var(--muted);padding-top:0;margin-bottom:8px}
 .fr{display:grid;grid-template-columns:minmax(0,.62fr) minmax(0,1.38fr);gap:56px;align-items:center;padding:56px 0;border-top:1px solid var(--line)}
 .sel .fr:first-of-type{border-top:0}
 .fr .t small{display:block;font-size:13px;color:var(--muted);margin-bottom:14px}
@@ -111,7 +111,7 @@ h1 mark{background:none;color:inherit;position:relative;white-space:nowrap;backg
 .wr:hover .logo{right:16px}.wr:hover .logo img{filter:brightness(0) invert(1)}.wr:hover .logo rect{fill:#fff}
 /* impact: pinned. The stage stays put; the numbers slide in sideways as you scroll and the stage changes with them. */
 .imx{position:relative;margin-top:120px}
-.imx-in{position:sticky;top:56px;height:calc(100vh - 56px);display:grid;grid-template-columns:110px 1fr;gap:16px 24px;padding-top:20px;border-top:1px solid var(--fg);align-content:start}
+.imx-in{position:sticky;top:56px;height:calc(100vh - 56px);display:grid;grid-template-columns:110px 1fr;gap:16px 24px;padding-top:20px;align-content:start}
 .imx-in>.lab{font-size:13px;color:var(--muted)}
 #im{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:28px;height:min(calc(100vh - 56px - 64px),640px)}
 .imv{overflow:hidden;display:flex;flex-direction:column;min-width:0}
@@ -129,7 +129,7 @@ h1 mark{background:none;color:inherit;position:relative;white-space:nowrap;backg
 .imhud #imtag{color:var(--accent)}
 @media(max-width:720px){.imx-in{grid-template-columns:1fr;gap:10px}.imx-in>.lab{display:none}#im{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) auto;height:calc(100vh - 56px - 44px);gap:14px}.imstage{order:-1}#imrows .im b{font-size:clamp(44px,14vw,72px)}#imrows .im{justify-content:flex-start}}
 /* sections */
-.grid{display:grid;grid-template-columns:200px 1fr;gap:16px 32px;padding-top:20px;border-top:1px solid var(--fg);margin-top:120px}
+.grid{display:grid;grid-template-columns:200px 1fr;gap:16px 32px;padding-top:20px;margin-top:120px}
 #work{margin-top:64px}
 .grid>.lab{font-size:13px;color:var(--muted);position:sticky;top:76px;align-self:start}
 .lab i{font-style:normal;font-family:var(--mono);margin-right:10px;color:var(--fg)}
