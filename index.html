@@ -109,7 +109,7 @@ h1 mark{background:none;color:inherit;position:relative;white-space:nowrap;backg
 .wr .logo{position:absolute;right:0;top:50%;width:52px;height:52px;margin-top:-26px;display:grid;place-items:center;pointer-events:none;opacity:1}
 .wr .logo img,.wr .logo svg{width:100%;height:100%;object-fit:contain;display:block}
 .wr.hl .head{padding-right:76px}
-.wr:hover .logo{right:16px}.wr:hover .logo img{filter:brightness(0) invert(1)}.wr:hover .logo rect{fill:#fff}
+.wr .logo{border-radius:12px;transition:background .25s,padding .25s}.wr:hover .logo{background:#fff;padding:5px}
 /* impact: pinned. The stage stays put; the numbers slide in sideways as you scroll and the stage changes with them. */
 .imx{position:relative;margin-top:120px}
 .imx-in{position:sticky;top:56px;height:calc(100vh - 56px);display:grid;grid-template-columns:110px 1fr;gap:16px 24px;padding-top:20px;align-content:start}
@@ -136,7 +136,8 @@ h1 mark{background:none;color:inherit;position:relative;white-space:nowrap;backg
 .lab i{font-style:normal;font-family:var(--mono);margin-right:10px;color:var(--fg)}
 @media(max-width:720px){.grid{grid-template-columns:1fr}.grid>.lab{position:static}}
 /* work */
-.wr{display:block;border-bottom:1px solid var(--line);padding:18px 0;position:relative;transition:padding .35s cubic-bezier(.2,.7,.2,1),background .25s,color .25s}
+.wr{display:block;border-bottom:1px solid var(--line);padding:18px 0;position:relative;isolation:isolate;transition:color .25s}
+.wr:before{content:"";position:absolute;inset:0 -16px;background:var(--accent);opacity:0;z-index:-1;transition:opacity .25s}
 .wr:first-child{border-top:1px solid var(--line)}
 .wr .head{display:flex;justify-content:space-between;align-items:baseline;gap:16px}
 .wr .nm{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
@@ -145,7 +146,8 @@ h1 mark{background:none;color:inherit;position:relative;white-space:nowrap;backg
 .wr time{color:var(--muted);font-size:13px;white-space:nowrap}
 .wr p{color:var(--muted);font-size:14px;margin-top:4px;max-width:60ch}
 .wr .ar{font-size:24px;opacity:0;transform:translateX(-8px);transition:all .3s;margin-left:auto}
-a.wr:hover,.wr.plain:hover{background:var(--accent);color:#fff;padding-left:16px;padding-right:16px}
+a.wr:hover,.wr.plain:hover{color:#fff}
+a.wr:hover:before,.wr.plain:hover:before{opacity:1}
 .wr:hover .rl,.wr:hover time,.wr:hover p{color:#ffffffcc}
 a.wr:hover .ar{opacity:1;transform:none}
 .wr.plain{cursor:default}
