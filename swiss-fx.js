@@ -1,5 +1,5 @@
 /* Swiss page effects
-   1. company logos that spin in as their row scrolls up
+   1. company logos sit fixed beside their rows
    2. Impact stage: an abstract particle sculpture (Three.js) that re-forms into a recognisable icon for each number.
       ~$2M        a workflow graph: trigger → condition → two actions
       7 areas     the Slack mark, in Slack's four colours
@@ -13,12 +13,7 @@
   const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v)),lerp=(a,b,t)=>a+(b-a)*t,seg=(t,a,b)=>clamp((t-a)/(b-a));
   const easeOut=t=>1-Math.pow(1-t,3),ease=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
 
-  /* ---------- 1. logos ---------- */
-  const logos=[...document.querySelectorAll('.wr .logo')];
-  const tickLogos=()=>{const vh=innerHeight;
-    logos.forEach(l=>{const r=l.parentElement.getBoundingClientRect(),p=clamp((vh-r.top)/(vh*.55)),e=reduce?1:easeOut(p);
-      l.style.opacity=e;l.style.transform='translateX('+((1-e)*90)+'px) rotate('+((1-e)*-140)+'deg) scale('+(.5+.5*e)+')'})};
-  addEventListener('scroll',tickLogos,{passive:true});addEventListener('resize',tickLogos);tickLogos();
+  /* ---------- 1. logos: fixed in place (no scroll animation) ---------- */
 
   /* ---------- 2. impact stage ---------- */
   const cv=document.getElementById('imcv'),c2=document.getElementById('imcv2');if(!cv||!c2)return;
