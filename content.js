@@ -65,7 +65,6 @@ window.PF = {
       ],
       projects: [
         { t: "Microsoft Defender", d: "Protection status, alerts, and credit and dark web monitoring, including family members.", img: "img/defender-ios-1.jpg", m: "iOS and Android" },
-        { t: "Mobile platform framework", d: "Shared mobile patterns that sped up development across the app.", img: "img/defender-android-2.jpg", m: "Faster to build" }
       ]
     },
     projects: [
