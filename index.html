@@ -24,16 +24,16 @@ body{overflow-x:hidden}
 .top kbd{font:12px var(--mono);border:1px solid var(--line);padding:0 6px;color:var(--fg)}
 @media(max-width:560px){.top .r .hide{display:none}}
 /* hero */
-.hero{padding:56px 0 8px;position:relative;min-height:0}
+.hero{padding:40px 0 96px;display:flex;align-items:center;min-height:calc(100vh - 56px);position:relative;}
 .ln{display:block;overflow:hidden;padding-bottom:.06em}
 .ln>span{display:block;transform:translateY(105%);animation:up .95s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(var(--i)*110ms + 200ms)}
 @keyframes up{to{transform:none}}
 @media (prefers-reduced-motion:reduce){.ln>span{animation:none;transform:none}}
-h1{font-weight:500;font-size:clamp(36px,5.6vw,64px);line-height:1;letter-spacing:-.055em}
+h1{font-weight:500;font-size:clamp(38px,6vw,76px);line-height:1;letter-spacing:-.055em}
 h1 mark{background:none;color:inherit;position:relative;white-space:nowrap;background-image:linear-gradient(var(--accent),var(--accent));background-repeat:no-repeat;background-position:0 92%;background-size:0 .11em;animation:ul .9s cubic-bezier(.2,.8,.2,1) 1.25s forwards}
 @keyframes ul{to{background-size:100% .11em}}
 @media(prefers-reduced-motion:reduce){h1 mark{animation:none;background-size:100% .11em}}
-.hero-g{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,300px);gap:56px;align-items:center}
+.hero-g{width:100%;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,300px);gap:56px;align-items:center}
 .hero-l .hl{margin-top:26px}
 .hcta{display:flex;align-items:center;gap:20px;margin-top:22px}
 .hcta .pill{background:var(--fg);color:#fff;padding:12px 22px;border-radius:99px;font-size:14px;transition:background .25s}.hcta .pill:hover{background:var(--accent)}
@@ -131,7 +131,7 @@ h1 mark{background:none;color:inherit;position:relative;white-space:nowrap;backg
 @media(max-width:720px){.imx-in{grid-template-columns:1fr;gap:10px}.imx-in>.lab{display:none}#im{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) auto;height:calc(100vh - 56px - 44px);gap:14px}.imstage{order:-1}#imrows .im b{font-size:clamp(44px,14vw,72px)}#imrows .im{justify-content:flex-start}}
 /* sections */
 .grid{display:grid;grid-template-columns:200px 1fr;gap:16px 32px;padding-top:20px;margin-top:120px}
-#work{margin-top:64px}
+#work{margin-top:24px}
 .grid>.lab{font-size:13px;color:var(--muted);position:sticky;top:76px;align-self:start}
 .lab i{font-style:normal;font-family:var(--mono);margin-right:10px;color:var(--fg)}
 @media(max-width:720px){.grid{grid-template-columns:1fr}.grid>.lab{position:static}}
@@ -211,7 +211,7 @@ footer{margin:64px 0 40px;font-size:13px;color:var(--muted);display:flex;justify
       <div class="hero-l">
         <div data-drift="-0.1" data-fade="1"><h1 id="h"></h1></div>
         <div class="hl"><p class="sub" id="sub"></p>
-          <div class="hcta"><a class="pill" href="#selected" data-nogo>See the work <i style="font-style:normal">↓</i></a><a class="plain" id="resnav2" target="_blank" rel="noopener">Résumé ↗</a></div></div>
+          <div class="hcta"><a class="pill" href="#work" data-nogo>See the work <i style="font-style:normal">↓</i></a><a class="plain" id="resnav2" target="_blank" rel="noopener">Résumé ↗</a></div></div>
       </div>
       <div id="pxbox"><span id="pxlab">(hover)</span><canvas id="px" width="480" height="564"></canvas></div>
     </div>
