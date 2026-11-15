@@ -19,7 +19,7 @@
   const cv=document.getElementById('imcv'),c2=document.getElementById('imcv2');if(!cv||!c2)return;
   const stage=cv.parentElement,rows=[...document.querySelectorAll('#imrows .im')],g=c2.getContext('2d');
   const hudTag=document.getElementById('imtag'),hudN=document.getElementById('imn');
-  const TAGS=['JumpCloud Workflows: event → condition → actions','slack: one card, seven areas','cloud + lock: codes restored','shield: policy at sign-in','2h 45 → 20 min','app store · google play'];
+  const TAGS=['JumpCloud Workflows: one trigger, every action','slack: one card, seven areas','cloud + lock: codes restored','shield: policy at sign-in','2h 45 → 20 min','app store · google play'];
   const css=getComputedStyle(document.documentElement),ACC=css.getPropertyValue('--accent').trim()||'#FF3B1F',INK='#0B0B0B',LINE='#E4E4E4',MUT='#737373';
   let age=0,cur=0,vis=false,px=null,py=null,hover=false,W=300,H=300,tx=0,ty=0,mx=0,my=0,lastT=0;
 
@@ -125,43 +125,28 @@
     [['Trigger',128,46],['If / else',128,128],['Slack',64,210],['Suspend',192,210]].forEach(l=>{g.fillStyle=INK;g.fillText(l[0],cx+(l[1]-128)*sc,cy+(l[2]-128)*sc)});
     g.globalAlpha=1}
 
-  /* ---------- scene 0: an automation, drawn abstractly ----------
-     A JumpCloud event starts at the top, a pulse runs down the line, a condition splits it, and two actions complete
-     (a device policy and a Slack message). No words. Hover or click to fire it again. */
-  const jcImg=new Image();{const l=document.querySelector('.wr .logo img');if(l)jcImg.src=l.getAttribute('src')}
+  /* ---------- scene 0: one simple glyph for a workflow ----------
+     A source node splits into two outcomes. A pulse runs along the curves and each outcome lights up. No words. */
   const dotc=(x,y,r,c)=>{g.beginPath();g.arc(x,y,r,0,7);g.fillStyle=c;g.fill()};
-  const lerp2=(a,b,t)=>a+(b-a)*t;
-  const along=(pts,t)=>{let tot=0,L=[];for(let i=1;i<pts.length;i++){const d=Math.hypot(pts[i][0]-pts[i-1][0],pts[i][1]-pts[i-1][1]);L.push(d);tot+=d}
-    let r=clamp(t)*tot;for(let i=0;i<L.length;i++){if(r<=L[i]){const f=L[i]?r/L[i]:0;return [lerp2(pts[i][0],pts[i+1][0],f),lerp2(pts[i][1],pts[i+1][1],f)]}r-=L[i]}return pts[pts.length-1]};
-  const strokePath=(pts,c,lw,dash,off)=>{g.beginPath();g.moveTo(pts[0][0],pts[0][1]);for(let i=1;i<pts.length;i++)g.lineTo(pts[i][0],pts[i][1]);g.strokeStyle=c;g.lineWidth=lw;g.setLineDash(dash||[]);g.lineDashOffset=off||0;g.stroke();g.setLineDash([])};
-  const rrect=(x,y,w,h,r)=>{g.beginPath();g.moveTo(x+r,y);g.arcTo(x+w,y,x+w,y+h,r);g.arcTo(x+w,y+h,x,y+h,r);g.arcTo(x,y+h,x,y,r);g.arcTo(x,y,x+w,y,r);g.closePath()};
-  function node(x,y,s,lit,kind){
-    const pop=lit>0?1+.12*Math.sin(clamp(lit*2)*Math.PI):1;g.save();g.translate(x,y);g.scale(pop,pop);
-    if(lit>0){g.globalAlpha=.16*(1-lit);g.beginPath();g.arc(0,0,s*(.7+Math.min(lit,1)*.7),0,7);g.fillStyle=ACC;g.fill();g.globalAlpha=1}
-    if(kind==='diamond'){g.beginPath();g.moveTo(0,-s*.78);g.lineTo(s*.78,0);g.lineTo(0,s*.78);g.lineTo(-s*.78,0);g.closePath()}else rrect(-s/2,-s/2,s,s,s*.24);
-    g.fillStyle='#fff';g.fill();g.strokeStyle=lit>0?ACC:INK;g.lineWidth=lit>0?2.4:1.5;g.stroke();
-    g.strokeStyle=INK;g.fillStyle=INK;g.lineWidth=1.6;g.lineCap='round';
-    if(kind==='person'){g.beginPath();g.arc(0,-s*.1,s*.13,0,7);g.stroke();g.beginPath();g.arc(0,s*.3,s*.24,Math.PI*1.15,Math.PI*1.85);g.stroke()}
-    else if(kind==='device'){g.strokeRect(-s*.24,-s*.2,s*.48,s*.3);g.beginPath();g.moveTo(-s*.34,s*.2);g.lineTo(s*.34,s*.2);g.stroke()}
-    else if(kind==='slack'){const cs=['#36C5F0','#2EB67D','#ECB22E','#E01E5A'];cs.forEach((c,i)=>{g.save();g.rotate(i*Math.PI/2);g.fillStyle=c;rrect(s*.04,-s*.3,s*.1,s*.22,s*.05);g.fill();g.beginPath();g.arc(-s*.08,-s*.24,s*.05,0,7);g.fill();g.restore()})}
-    if(lit>.55){g.beginPath();g.arc(s*.46,-s*.46,s*.17,0,7);g.fillStyle=ACC;g.fill();g.strokeStyle='#fff';g.lineWidth=1.8;g.beginPath();g.moveTo(s*.38,-s*.46);g.lineTo(s*.44,-s*.4);g.lineTo(s*.55,-s*.53);g.stroke()}
-    g.restore()}
+  const bez=(p0,p1,p2,p3,t)=>{const u=1-t;return [u*u*u*p0[0]+3*u*u*t*p1[0]+3*u*t*t*p2[0]+t*t*t*p3[0],u*u*u*p0[1]+3*u*u*t*p1[1]+3*u*t*t*p2[1]+t*t*t*p3[1]]};
   function workflow(dt){
-    const P=5.6,T=age%P,cx=W/2,s=Math.min(W,H)*.1,yLogo=H*.12,yTr=H*.30,yCd=H*.50,yBr=H*.64,yAc=H*.80,xL=cx-W*.22,xR=cx+W*.22;
-    const top=[[cx,yLogo+s*.5],[cx,yTr-s*.5]],mid=[[cx,yTr+s*.5],[cx,yCd-s*.78]],left=[[cx,yCd+s*.78],[cx,yBr],[xL,yBr],[xL,yAc-s*.5]],right=[[cx,yCd+s*.78],[cx,yBr],[xR,yBr],[xR,yAc-s*.5]];
-    const flow=T*18;
-    [top,mid,left,right].forEach(p=>strokePath(p,LINE,1.5,[3,6],-flow));
-    /* timeline: 0 → 0.6 logo to trigger, 0.6 → 1.3 to condition, 1.3 → 2.7 both branches, then hold, then reset */
-    const a=seg(T,0,.6),b=seg(T,.6,1.3),c=seg(T,1.3,2.7),fade=1-seg(T,4.7,5.4);
-    const lit=(t0,len=.9)=>reduce?1:fade*clamp((T-t0)/len);
-    /* the logo, the event source */
-    const lr=s*.62;g.beginPath();g.arc(cx,yLogo,lr,0,7);g.fillStyle='#fff';g.fill();g.strokeStyle=INK;g.lineWidth=1.5;g.stroke();
-    if(jcImg.complete&&jcImg.naturalWidth)g.drawImage(jcImg,cx-lr*.62,yLogo-lr*.62,lr*1.24,lr*1.24);
-    node(cx,yTr,s,lit(.55),'person');node(cx,yCd,s,lit(1.25),'diamond');node(xL,yAc,s,lit(2.7),'device');node(xR,yAc,s,lit(2.7),'slack');
-    /* the pulse */
-    const pulse=(pts,t)=>{if(t<=0||t>=1)return;const [x,y]=along(pts,t);for(let k=5;k>0;k--){const [tx,ty]=along(pts,Math.max(0,t-k*.03));g.globalAlpha=.1*(6-k);dotc(tx,ty,3.6*(1-k*.1),ACC)}g.globalAlpha=1;dotc(x,y,5,ACC);g.globalAlpha=.25;dotc(x,y,10,ACC);g.globalAlpha=1};
-    if(!reduce){pulse(top,a);pulse(mid,b);pulse(left,c);pulse(right,c)}
-    txt(hover?'fired again':'hover to run it',W-22,28,MUT,'right',12)}
+    const P=3.4,T=age%P,r=Math.min(W,H)*.075,cx=W/2,cy=H/2;
+    const A=[cx-W*.26,cy],B=[cx+W*.22,cy-H*.15],C=[cx+W*.22,cy+H*.15];
+    const curve=(E)=>[[A[0]+r,A[1]],[cx-W*.02,A[1]],[cx-W*.02,E[1]],[E[0]-r,E[1]]];
+    const cb=curve(B),cc=curve(C);
+    /* the glyph */
+    [cb,cc].forEach(c=>{g.beginPath();g.moveTo(c[0][0],c[0][1]);g.bezierCurveTo(c[1][0],c[1][1],c[2][0],c[2][1],c[3][0],c[3][1]);g.strokeStyle=INK;g.lineWidth=3;g.lineCap='round';g.stroke()});
+    const run=reduce?1:seg(T,.35,1.6),lit=reduce?1:clamp((T-1.6)/.5)*(1-seg(T,2.9,3.4));
+    const out=(E)=>{if(lit>0){g.globalAlpha=.14*(1-lit*.4);dotc(E[0],E[1],r*(1.5+lit*.5),ACC);g.globalAlpha=1}
+      dotc(E[0],E[1],r,lit>0?ACC:'#fff');g.beginPath();g.arc(E[0],E[1],r,0,7);g.strokeStyle=lit>0?ACC:INK;g.lineWidth=3;g.stroke();
+      if(lit>.5){g.strokeStyle='#fff';g.lineWidth=3;g.lineCap='round';g.lineJoin='round';g.beginPath();g.moveTo(E[0]-r*.4,E[1]);g.lineTo(E[0]-r*.1,E[1]+r*.32);g.lineTo(E[0]+r*.45,E[1]-r*.32);g.stroke()}};
+    out(B);out(C);
+    /* the source */
+    const ping=reduce?0:1-seg(T,0,.55);if(ping>0){g.globalAlpha=.3*ping;dotc(A[0],A[1],r*(1+(1-ping)*1.1),ACC);g.globalAlpha=1}
+    dotc(A[0],A[1],r,INK);dotc(A[0],A[1],r*.34,'#fff');
+    /* the pulse, with a short trail */
+    if(!reduce&&run>0&&run<1)[cb,cc].forEach(c=>{for(let k=6;k>0;k--){const [x,y]=bez(c[0],c[1],c[2],c[3],Math.max(0,run-k*.035));g.globalAlpha=.09*(7-k);dotc(x,y,4*(1-k*.08),ACC)}g.globalAlpha=1;const [x,y]=bez(c[0],c[1],c[2],c[3],run);dotc(x,y,6,ACC);g.globalAlpha=.25;dotc(x,y,12,ACC);g.globalAlpha=1});
+    txt(hover?'again':'hover to run it',W-22,28,MUT,'right',12)}
   function frame(t){
     if(!vis)return;
     const dt=Math.min(.05,(t-lastT)/1000||.016);lastT=t;
