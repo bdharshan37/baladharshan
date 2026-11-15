@@ -227,7 +227,7 @@ footer{margin:64px 0 40px;font-size:13px;color:var(--muted);display:flex;justify
   <div class="imx" id="impact"><div class="imx-in"><div class="lab rv"><i>02</i>Impact</div><div id="im"><div class="imv"><div id="imrows"></div><div class="improg"><i id="imbar"></i></div></div><div class="imstage" id="imstage"><canvas id="imcv"></canvas><canvas id="imcv2"></canvas><div class="imhud"><span id="imtag"></span><span id="imn"></span></div></div></div></div></div>
   <section class="sel" id="selected"><div class="sel-h">Selected work · open a project to see how it was made</div><div id="feat"></div></section>
   <div class="grid" id="beliefs"><div class="lab rv"><i>03</i>Principles</div><div id="pr"></div></div>
-  <div class="grid" id="ai"><div class="lab rv"><i>04</i>Designing in code</div><div class="aib rv" id="aib"><b><span id="aic">0</span><small>/<span id="aitot"></span></small></b><p id="aitext"></p><div class="dots" id="dots"></div><div class="tl" id="tl"></div></div></div>
+  <section id="ai"></section>
 </main>
 
 <section class="hs" id="after"><div class="hs-in">
@@ -275,11 +275,6 @@ $('feat').innerHTML=FEATURED.map(sl=>PJ.find(x=>x.slug===sl)).map(x=>`<a class="
 // ---- impact / principles / method / ai ----
 $('imrows').style.setProperty('--n',P.impact.length);$('imrows').innerHTML=P.impact.map(i=>`<div class="im"><b data-c>${i.n}</b><span>${i.l}<em>${i.s}</em></span></div>`).join('');
 $('pr').innerHTML=P.principles.map((p,i)=>`<div class="pr rv"><i>${pad(i+1)}</i><h3>${p[0]}</h3><p>${p[1]}</p></div>`).join('');
-$('aitot').textContent=P.ai.total;$('aitext').textContent=P.ai.text;
-$('dots').innerHTML=Array.from({length:P.ai.total},()=>'<span></span>').join('');
-$('tl').innerHTML=P.ai.tools.map(t=>`<span>${t}</span>`).join('');
-let aid=false;new IntersectionObserver((es,io)=>es.forEach(e=>{if(!e.isIntersecting||aid)return;aid=true;io.disconnect();
-  [...document.querySelectorAll('#dots span')].slice(0,P.ai.done).forEach((c,i)=>setTimeout(()=>{c.classList.add('f');$('aic').textContent=i+1},reduce?0:i*110))}),{threshold:.5}).observe($('aib'));
 // ---- horizontal-scroll photography ----
 $('track').innerHTML=P.photos.map((p,i)=>`<figure class="ph"><div class="pw"><img src="${p.src}" data-src="${p.src}" data-cap="${p.cap}" alt="${p.cap}" draggable="false"><canvas class="pxl"></canvas></div><figcaption><span>${p.cap}</span><span>${pad(i+1)}</span></figcaption></figure>`).join('');
 $('stu').textContent=P.studio.name+' ↗';$('stu').href=P.studio.url;$('stu2').textContent=P.studio.name+' studio ↗';$('stu2').href=P.studio.url;
@@ -313,4 +308,4 @@ document.addEventListener('mouseover',e=>{dot.classList.toggle('big',!!e.target.
 addEventListener('keydown',e=>{if((e.key==='g'||e.key==='G')&&!/INPUT|TEXTAREA/.test(document.activeElement.tagName))$('gridov').classList.toggle('on')});
 palette([{l:'Work',h:'01',go:jump('work')},{l:'Impact',h:'02',go:jump('impact')},{l:'Principles',h:'03',go:jump('beliefs')},{l:'After hours',h:'↓',go:jump('after')},{l:'Case studies',h:'🔒',go:jump('deck')},{l:'JumpCloud',h:'→',go:()=>location.href='company-swiss.html?c=jumpcloud'},{l:'Microsoft',h:'→',go:()=>location.href='company-swiss.html?c=microsoft'},{l:'Toggle grid',h:'G',go:()=>$('gridov').classList.toggle('on')},{l:'Contact',h:'07',go:jump('contact')}]);
 setTimeout(reveal,700);
-</script><script src="swiss-fx.js"></script><script src="dial.js"></script></body></html>
+</script><script src="swiss-fx.js"></script><script src="dial.js"></script><script src="aicode.js"></script></body></html>
