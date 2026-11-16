@@ -23,7 +23,7 @@
 
   host.className='dc';
   host.innerHTML=`<div class="k"><i>04</i>Designing in code</div>
-    <div class="dc-g"><div><h2>I describe it. <mark>Claude builds it.</mark> I design in the result.</h2>
+    <div class="dc-g"><div><h2>I’ve been <mark>designing in code</mark>, with Claude as my pair.</h2>
       <p class="tx">I prompt, review and refine in Storybook, so customers click through something real in the same call. That is how Workflows shipped in 25 days.</p>
       <div class="tl">${P.ai.tools.map(t=>`<span>${t}</span>`).join('')}</div>
       <div class="stat"><span>${P.ai.done} of my ${P.ai.total} projects went from idea to working screens this way.</span><span class="dots">${Array.from({length:P.ai.total},(_,i)=>`<i class="${i<P.ai.done?'f':''}"></i>`).join('')}</span></div></div>
