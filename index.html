@@ -35,6 +35,7 @@ h1 mark{background:none;color:inherit;position:relative;white-space:nowrap;backg
 @media(prefers-reduced-motion:reduce){h1 mark{animation:none;background-size:100% .11em}}
 .hero-g{width:100%;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,300px);gap:56px;align-items:center}
 .hero-l .hl{margin-top:26px}
+
 .hcta{display:flex;align-items:center;gap:20px;margin-top:22px}
 .hcta .pill{background:var(--fg);color:#fff;padding:12px 22px;border-radius:99px;font-size:14px;transition:background .25s}.hcta .pill:hover{background:var(--accent)}
 .hcta .plain{font-size:14px;border-bottom:1px solid var(--fg)}
@@ -227,6 +228,12 @@ footer{margin:64px 0 40px;font-size:13px;color:var(--muted);display:flex;justify
   <div class="grid" id="work"><div class="lab rv"><i>01</i>Work</div><div id="rows"></div></div>
   <div class="imx" id="impact"><div class="imx-in"><div class="lab rv"><i>02</i>Impact</div><div id="im"><div class="imv"><div id="imrows"></div><div class="improg"><i id="imbar"></i></div></div><div class="imstage" id="imstage"><canvas id="imcv"></canvas><canvas id="imcv2"></canvas><div class="imhud"><span id="imtag"></span><span id="imn"></span></div></div></div></div></div>
   <section class="sel" id="selected"><div class="sel-h">Selected work · open a project to see how it was made</div><div id="feat"></div></section>
+  <div class="grid" id="deck"><div class="lab rv"><i>↳</i>Case studies</div>
+    <div class="rv" id="call"><div class="call"><div class="dial" id="dial"></div>
+      <div class="cl"><small class="kick">Presented live, not posted</small><h3>Case studies are a conversation.</h3>
+        <p class="sub">I walk through each project on a call: the problem, the real screens, the trade-offs. Pick up the phone to book one.</p>
+        <div class="num" id="num" aria-live="polite"></div><div class="cline" id="cline"><svg class="ring" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l4-1 2 5-2.5 1.6a13 13 0 0 0 6.4 6.4L16.5 12l5 2-1 4c-9 3-19-7-15.5-15z"/></svg><span id="ctext">Dial C · A · S · E (2 · 2 · 7 · 3) to connect</span></div></div></div>
+      <div class="conn" id="conn"></div></div></div>
   <div class="grid" id="beliefs"><div class="lab rv"><i>03</i>Principles</div><div id="pr"></div></div>
   <section id="ai"></section>
 </main>
@@ -237,13 +244,9 @@ footer{margin:64px 0 40px;font-size:13px;color:var(--muted);display:flex;justify
   <div class="hs-bar"><i><b id="hsb"></b></i></div>
 </div></section>
 
+<section id="games" data-img="img/"></section>
+
 <main class="wrap">
-  <div class="grid" id="deck"><div class="lab rv"><i>05</i>Case studies</div>
-    <div class="rv" id="call"><div class="call"><div class="dial" id="dial"></div>
-      <div class="cl"><small class="kick">Presented live, not posted</small><h3>Case studies are a conversation.</h3>
-        <p class="sub">I walk through each project on a call: the problem, the real screens, the trade-offs. Pick up the phone to book one.</p>
-        <div class="num" id="num" aria-live="polite"></div><div class="cline" id="cline"><svg class="ring" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l4-1 2 5-2.5 1.6a13 13 0 0 0 6.4 6.4L16.5 12l5 2-1 4c-9 3-19-7-15.5-15z"/></svg><span id="ctext">Dial C · A · S · E (2 · 2 · 7 · 3) to connect</span></div></div></div>
-      <div class="conn" id="conn"></div></div></div>
   <div class="grid" id="contact"><div class="lab rv"><i>06</i>Contact</div><div class="rv"><a class="mailbig" id="mail"></a><div class="links"><a id="res" target="_blank">Résumé (PDF) ↗</a><a id="stu2" target="_blank"></a></div></div></div>
   <div class="thx" id="thx" aria-live="off"></div>
   <footer><span>© 2026 Baladharshan</span><span>Thank you for scrolling</span></footer>
@@ -298,7 +301,7 @@ thanksLoop($('thx'));$('thx').classList.add('thx');
 // ---- scroll + interaction polish ----
 progress();drift();countUps('[data-c]');
 addEventListener('scroll',()=>$('topbar').classList.toggle('s',scrollY>10),{passive:true});
-const names={work:'Work',impact:'Impact',beliefs:'Principles',ai:'Designing in code',after:'After hours',deck:'Case studies',contact:'Contact'};
+const names={work:'Work',impact:'Impact',deck:'Case studies',beliefs:'Principles',ai:'Designing in code',after:'After hours',games:'Off the clock',contact:'Contact'};
 spy(Object.keys(names),id=>$('cur').textContent=id?' / '+names[id]:'');
 // custom cursor
 const dot=$('cur-dot');let mx=0,my=0,dx=0,dy=0;
@@ -307,6 +310,6 @@ addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
 document.addEventListener('mouseover',e=>{dot.classList.toggle('big',!!e.target.closest('a.wr,#pxbox,.ph img'))});
 // grid overlay
 addEventListener('keydown',e=>{if((e.key==='g'||e.key==='G')&&!/INPUT|TEXTAREA/.test(document.activeElement.tagName))$('gridov').classList.toggle('on')});
-palette([{l:'Work',h:'01',go:jump('work')},{l:'Impact',h:'02',go:jump('impact')},{l:'Principles',h:'03',go:jump('beliefs')},{l:'After hours',h:'↓',go:jump('after')},{l:'Case studies',h:'🔒',go:jump('deck')},{l:'JumpCloud',h:'→',go:()=>location.href='company-swiss.html?c=jumpcloud'},{l:'Microsoft',h:'→',go:()=>location.href='company-swiss.html?c=microsoft'},{l:'Toggle grid',h:'G',go:()=>$('gridov').classList.toggle('on')},{l:'Contact',h:'07',go:jump('contact')}]);
+palette([{l:'Work',h:'01',go:jump('work')},{l:'Impact',h:'02',go:jump('impact')},{l:'Case studies',h:'🔒',go:jump('deck')},{l:'Principles',h:'03',go:jump('beliefs')},{l:'After hours',h:'↓',go:jump('after')},{l:'Off the clock',h:'▶',go:jump('games')},{l:'JumpCloud',h:'→',go:()=>location.href='company-swiss.html?c=jumpcloud'},{l:'Microsoft',h:'→',go:()=>location.href='company-swiss.html?c=microsoft'},{l:'Toggle grid',h:'G',go:()=>$('gridov').classList.toggle('on')},{l:'Contact',h:'07',go:jump('contact')}]);
 setTimeout(reveal,700);
-</script><script src="swiss-fx.js"></script><script src="dial.js"></script><script src="aicode.js"></script></body></html>
+</script><script src="swiss-fx.js"></script><script src="dial.js"></script><script src="aicode.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script><script src="games.js"></script></body></html>
