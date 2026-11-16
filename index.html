@@ -136,7 +136,7 @@ h1 mark{background:none;color:inherit;position:relative;white-space:nowrap;backg
 @media(max-width:720px){.imx-in{grid-template-columns:1fr;gap:10px}.imx-in>.lab{display:none}#im{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) auto;height:calc(100vh - 56px - 44px);gap:14px}.imstage{order:-1}#imrows .im b{font-size:clamp(44px,14vw,72px)}#imrows .im{justify-content:flex-start}}
 /* sections */
 .grid{display:grid;grid-template-columns:200px minmax(0,1fr);gap:16px 32px;padding-top:20px;margin-top:120px}
-#work{margin-top:24px}
+#work{margin-top:24px}#selected{scroll-margin-top:72px}
 .grid>.lab{font-size:13px;color:var(--muted);position:sticky;top:76px;align-self:start}
 .lab i{font-style:normal;font-family:var(--mono);margin-right:10px;color:var(--fg)}
 @media(max-width:720px){.grid{grid-template-columns:minmax(0,1fr)}.grid>.lab{position:static}}
@@ -212,22 +212,22 @@ footer{margin:64px 0 40px;font-size:13px;color:var(--muted);display:flex;justify
 </head><body>
 <div id="cur-dot"></div>
 <div id="gridov"><div class="wrap"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
-<header class="top" id="topbar"><div class="wrap"><div class="l"><span class="dot"></span>Baladharshan<span id="cur"></span></div><nav class="r"><a href="#work">Work</a><a href="#impact">Impact</a><a href="#contact">Contact</a><a id="resnav" target="_blank" rel="noopener">Résumé ↗</a><span class="hide">Bangalore <span id="clk"></span></span></nav></div></header>
+<header class="top" id="topbar"><div class="wrap"><div class="l"><span class="dot"></span>Baladharshan<span id="cur"></span></div><nav class="r"><a href="#selected">Work</a><a href="#impact">Impact</a><a href="#contact">Contact</a><a id="resnav" target="_blank" rel="noopener">Résumé ↗</a><span class="hide">Bangalore <span id="clk"></span></span></nav></div></header>
 <main class="wrap">
   <section class="hero" id="top">
     <div class="hero-g">
       <div class="hero-l">
         <div data-drift="-0.1" data-fade="1"><h1 id="h"></h1></div>
         <div class="hl"><p class="sub" id="sub"></p>
-          <div class="hcta"><a class="pill" href="#work" data-nogo>See the work <i style="font-style:normal">↓</i></a><a class="plain" id="resnav2" target="_blank" rel="noopener">Résumé ↗</a></div></div>
+          <div class="hcta"><a class="pill" href="#selected" data-nogo>See the work <i style="font-style:normal">↓</i></a><a class="plain" id="resnav2" target="_blank" rel="noopener">Résumé ↗</a></div></div>
       </div>
       <div id="pxbox"><span id="pxlab">(hover)</span><canvas id="px" width="480" height="564"></canvas></div>
     </div>
   </section>
 
-  <div class="grid" id="work"><div class="lab rv"><i>01</i>Work</div><div id="rows"></div></div>
+  <div class="grid" id="work"><div class="lab rv"><i>01</i>Experience</div><div id="rows"></div></div>
   <div class="imx" id="impact"><div class="imx-in"><div class="lab rv"><i>02</i>Impact</div><div id="im"><div class="imv"><div id="imrows"></div><div class="improg"><i id="imbar"></i></div></div><div class="imstage" id="imstage"><canvas id="imcv"></canvas><canvas id="imcv2"></canvas><div class="imhud"><span id="imtag"></span><span id="imn"></span></div></div></div></div></div>
-  <section class="sel" id="selected"><div class="sel-h">Selected work · open a project to see how it was made</div><div id="feat"></div></section>
+  <section class="sel" id="selected"><div class="sel-h">Work · open a project to see how it was made</div><div id="feat"></div></section>
   <div class="grid" id="deck"><div class="lab rv"><i>↳</i>Case studies</div>
     <div class="rv" id="call"><div class="call"><div class="dial" id="dial"></div>
       <div class="cl"><small class="kick">Presented live, not posted</small><h3>Case studies are a conversation.</h3>
@@ -301,7 +301,7 @@ thanksLoop($('thx'));$('thx').classList.add('thx');
 // ---- scroll + interaction polish ----
 progress();drift();countUps('[data-c]');
 addEventListener('scroll',()=>$('topbar').classList.toggle('s',scrollY>10),{passive:true});
-const names={work:'Work',impact:'Impact',deck:'Case studies',beliefs:'Principles',ai:'Designing in code',after:'After hours',games:'Off the clock',contact:'Contact'};
+const names={work:'Experience',impact:'Impact',selected:'Work',deck:'Case studies',beliefs:'Principles',ai:'Designing in code',after:'After hours',games:'Off the clock',contact:'Contact'};
 spy(Object.keys(names),id=>$('cur').textContent=id?' / '+names[id]:'');
 // custom cursor
 const dot=$('cur-dot');let mx=0,my=0,dx=0,dy=0;
@@ -310,6 +310,6 @@ addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
 document.addEventListener('mouseover',e=>{dot.classList.toggle('big',!!e.target.closest('a.wr,#pxbox,.ph img'))});
 // grid overlay
 addEventListener('keydown',e=>{if((e.key==='g'||e.key==='G')&&!/INPUT|TEXTAREA/.test(document.activeElement.tagName))$('gridov').classList.toggle('on')});
-palette([{l:'Work',h:'01',go:jump('work')},{l:'Impact',h:'02',go:jump('impact')},{l:'Case studies',h:'🔒',go:jump('deck')},{l:'Principles',h:'03',go:jump('beliefs')},{l:'After hours',h:'↓',go:jump('after')},{l:'Off the clock',h:'▶',go:jump('games')},{l:'JumpCloud',h:'→',go:()=>location.href='company-swiss.html?c=jumpcloud'},{l:'Microsoft',h:'→',go:()=>location.href='company-swiss.html?c=microsoft'},{l:'Toggle grid',h:'G',go:()=>$('gridov').classList.toggle('on')},{l:'Contact',h:'07',go:jump('contact')}]);
+palette([{l:'Experience',h:'01',go:jump('work')},{l:'Impact',h:'02',go:jump('impact')},{l:'Work',h:'↓',go:jump('selected')},{l:'Case studies',h:'🔒',go:jump('deck')},{l:'Principles',h:'03',go:jump('beliefs')},{l:'After hours',h:'↓',go:jump('after')},{l:'Off the clock',h:'▶',go:jump('games')},{l:'JumpCloud',h:'→',go:()=>location.href='company-swiss.html?c=jumpcloud'},{l:'Microsoft',h:'→',go:()=>location.href='company-swiss.html?c=microsoft'},{l:'Toggle grid',h:'G',go:()=>$('gridov').classList.toggle('on')},{l:'Contact',h:'07',go:jump('contact')}]);
 setTimeout(reveal,700);
 </script><script src="swiss-fx.js"></script><script src="dial.js"></script><script src="aicode.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script><script src="games.js"></script></body></html>
