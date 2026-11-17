@@ -1,6 +1,6 @@
 <!doctype html><html lang="en"><head><script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Baladharshan — Staff Product Designer</title>
-<meta name="description" content="Staff product designer at JumpCloud. Enterprise software, design systems, and designing in code.">
+<title>Baladharshan — Staff Product Designer · UX Lead</title>
+<meta name="description" content="Staff product designer at JumpCloud. UX strategy, research, accessibility and design systems for enterprise platforms.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Noto+Sans+Tamil&family=Noto+Sans+Telugu&family=Noto+Sans+Devanagari&family=Noto+Sans+Kannada&family=Noto+Sans+Malayalam&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="shared.css">
@@ -212,14 +212,14 @@ footer{margin:64px 0 40px;font-size:13px;color:var(--muted);display:flex;justify
 </head><body>
 <div id="cur-dot"></div>
 <div id="gridov"><div class="wrap"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
-<header class="top" id="topbar"><div class="wrap"><div class="l"><span class="dot"></span>Baladharshan<span id="cur"></span></div><nav class="r"><a href="#selected">Work</a><a href="#impact">Impact</a><a href="#contact">Contact</a><a id="resnav" target="_blank" rel="noopener">Résumé ↗</a><span class="hide">Bangalore <span id="clk"></span></span></nav></div></header>
+<header class="top" id="topbar"><div class="wrap"><div class="l"><span class="dot"></span>Baladharshan<span id="cur"></span></div><nav class="r"><a href="#selected">UX leadership</a><a href="#impact">Impact</a><a href="#contact">Contact</a><a id="resnav" target="_blank" rel="noopener">Résumé ↗</a><span class="hide">Bangalore <span id="clk"></span></span></nav></div></header>
 <main class="wrap">
   <section class="hero" id="top">
     <div class="hero-g">
       <div class="hero-l">
         <div data-drift="-0.1" data-fade="1"><h1 id="h"></h1></div>
         <div class="hl"><p class="sub" id="sub"></p>
-          <div class="hcta"><a class="pill" href="#selected" data-nogo>See the work <i style="font-style:normal">↓</i></a><a class="plain" id="resnav2" target="_blank" rel="noopener">Résumé ↗</a></div></div>
+          <div class="hcta"><a class="pill" href="#selected" data-nogo>See how I lead <i style="font-style:normal">↓</i></a><a class="plain" id="resnav2" target="_blank" rel="noopener">Résumé ↗</a></div></div>
       </div>
       <div id="pxbox"><span id="pxlab">(hover)</span><canvas id="px" width="480" height="564"></canvas></div>
     </div>
@@ -227,14 +227,14 @@ footer{margin:64px 0 40px;font-size:13px;color:var(--muted);display:flex;justify
 
   <div class="grid" id="work"><div class="lab rv"><i>01</i>Experience</div><div id="rows"></div></div>
   <div class="imx" id="impact"><div class="imx-in"><div class="lab rv"><i>02</i>Impact</div><div id="im"><div class="imv"><div id="imrows"></div><div class="improg"><i id="imbar"></i></div></div><div class="imstage" id="imstage"><canvas id="imcv"></canvas><canvas id="imcv2"></canvas><div class="imhud"><span id="imtag"></span><span id="imn"></span></div></div></div></div></div>
-  <section class="sel" id="selected"><div class="sel-h">Work · open a project to see how it was made</div><div id="feat"></div></section>
+  <section class="sel" id="selected"><div class="sel-h">UX leadership · three ways I lead, with the framework, the before and after, and the result</div><div id="feat"></div></section>
   <div class="grid" id="deck"><div class="lab rv"><i>↳</i>Case studies</div>
     <div class="rv" id="call"><div class="call"><div class="dial" id="dial"></div>
       <div class="cl"><small class="kick">Presented live, not posted</small><h3>Case studies are a conversation.</h3>
         <p class="sub">I walk through each project on a call: the problem, the real screens, the trade-offs. Pick up the phone to book one.</p>
         <div class="num" id="num" aria-live="polite"></div><div class="cline" id="cline"><svg class="ring" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l4-1 2 5-2.5 1.6a13 13 0 0 0 6.4 6.4L16.5 12l5 2-1 4c-9 3-19-7-15.5-15z"/></svg><span id="ctext">Dial C · A · S · E (2 · 2 · 7 · 3) to connect</span></div></div></div>
       <div class="conn" id="conn"></div></div></div>
-  <div class="grid" id="beliefs"><div class="lab rv"><i>03</i>Principles</div><div id="pr"></div></div>
+  <div class="grid" id="beliefs"><div class="lab rv"><i>03</i>How I lead UX</div><div id="pr"></div></div>
   <section id="ai"></section>
 </main>
 
@@ -256,10 +256,10 @@ footer{margin:64px 0 40px;font-size:13px;color:var(--muted);display:flex;justify
 const P=PF,$=id=>document.getElementById(id),reduce=matchMedia('(prefers-reduced-motion:reduce)').matches,pad=n=>String(n).padStart(2,'0');
 pageWipe();clock($('clk'));
 // ---- hero ----
-const lines=['I make admin software','feel like a <mark>quiet Tuesday</mark>.'];
+const lines=['I lead UX strategy,','research and <mark>accessibility</mark>.'];
 $('h').innerHTML=lines.map((l,i)=>`<span class="ln"><span style="--i:${i}">${l}</span></span>`).join('');
 $('h').setAttribute('aria-label',P.intro);
-$('sub').innerHTML='I’m a Staff Product Designer at <b>JumpCloud</b>.<br>I lead design across access, devices and Workflows.';
+$('sub').innerHTML='I’m a Staff Product Designer at <b>JumpCloud</b>.<br>I set the UX direction for enterprise platforms and keep research and accessibility in every decision.';
 // halftone portrait on hover
 pixelPortrait({src:'img/portrait.jpg',canvas:$('px'),hover:$('pxbox'),mode:'halftone',ink:[11,11,11],crop:{x:330,y:140,w:694,h:817},});
 $('pxlab').textContent='(hover)';
@@ -271,8 +271,8 @@ $('rows').innerHTML=P.work.map(w=>w.detail
   ?`<a class="wr hl rv" data-go="${w.co}" href="company-swiss.html?c=${w.detail.slug}">${lg(w.co)}<div class="head"><div class="nm"><b>${w.co}</b><span class="rl">${w.role}</span></div><span class="ar">→</span><time>${w.when}</time></div><p>${w.line}</p></a>`
   :`<div class="wr plain ${LOGO[w.co]?'hl ':''}rv">${lg(w.co)}<div class="head"><div class="nm"><b>${w.co}</b><span class="rl">${w.role}</span></div><time>${w.when}</time></div><p>${w.line}</p></div>`).join('');
 $('resnav').href=P.resume;$('resnav2').href=P.resume;
-const CO={jumpcloud:'JumpCloud',microsoft:'Microsoft'};
-const FEATURED=['workflows','conditional-access','defender'];
+const CO={jumpcloud:'JumpCloud',microsoft:'Microsoft',lead:'UX leadership'};
+const FEATURED=['ux-strategy','accessibility','research-priority'];
 const more=['jumpcloud','microsoft'].map(c=>`<a href="company-swiss.html?c=${c}" data-go="${CO[c]}">All ${CO[c]} projects (${PJ.filter(x=>x.co===c).length}) →</a>`).join('');
 $('feat').innerHTML=FEATURED.map(sl=>PJ.find(x=>x.slug===sl)).map(x=>`<a class="fr rv" data-go="${x.name}" href="project-swiss.html?p=${x.slug}"><div class="t"><small>${CO[x.co]} · ${x.area}</small><h3>${x.name}</h3><p>${x.line}</p><div class="m"><b>${x.metric}</b>${x.metricL}</div><span class="go">Explore the project <i style="font-style:normal">→</i></span></div><div class="fi" style="--cbg:${x.bg}"><img src="thumbs/cards/${x.slug}.jpg" alt="${x.name}" loading="lazy"></div></a>`).join('')+`<div class="more">${more}</div>`;
 
@@ -301,7 +301,7 @@ thanksLoop($('thx'));$('thx').classList.add('thx');
 // ---- scroll + interaction polish ----
 progress();drift();countUps('[data-c]');
 addEventListener('scroll',()=>$('topbar').classList.toggle('s',scrollY>10),{passive:true});
-const names={work:'Experience',impact:'Impact',selected:'Work',deck:'Case studies',beliefs:'Principles',ai:'Designing in code',after:'After hours',games:'Off the clock',contact:'Contact'};
+const names={work:'Experience',impact:'Impact',selected:'UX leadership',deck:'Case studies',beliefs:'How I lead UX',ai:'Designing in code',after:'After hours',games:'Off the clock',contact:'Contact'};
 spy(Object.keys(names),id=>$('cur').textContent=id?' / '+names[id]:'');
 // custom cursor
 const dot=$('cur-dot');let mx=0,my=0,dx=0,dy=0;
@@ -310,6 +310,6 @@ addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
 document.addEventListener('mouseover',e=>{dot.classList.toggle('big',!!e.target.closest('a.wr,#pxbox,.ph img'))});
 // grid overlay
 addEventListener('keydown',e=>{if((e.key==='g'||e.key==='G')&&!/INPUT|TEXTAREA/.test(document.activeElement.tagName))$('gridov').classList.toggle('on')});
-palette([{l:'Experience',h:'01',go:jump('work')},{l:'Impact',h:'02',go:jump('impact')},{l:'Work',h:'↓',go:jump('selected')},{l:'Case studies',h:'🔒',go:jump('deck')},{l:'Principles',h:'03',go:jump('beliefs')},{l:'After hours',h:'↓',go:jump('after')},{l:'Off the clock',h:'▶',go:jump('games')},{l:'JumpCloud',h:'→',go:()=>location.href='company-swiss.html?c=jumpcloud'},{l:'Microsoft',h:'→',go:()=>location.href='company-swiss.html?c=microsoft'},{l:'Toggle grid',h:'G',go:()=>$('gridov').classList.toggle('on')},{l:'Contact',h:'07',go:jump('contact')}]);
+palette([{l:'Experience',h:'01',go:jump('work')},{l:'Impact',h:'02',go:jump('impact')},{l:'UX leadership',h:'↓',go:jump('selected')},{l:'Case studies',h:'🔒',go:jump('deck')},{l:'How I lead UX',h:'03',go:jump('beliefs')},{l:'After hours',h:'↓',go:jump('after')},{l:'Off the clock',h:'▶',go:jump('games')},{l:'JumpCloud',h:'→',go:()=>location.href='company-swiss.html?c=jumpcloud'},{l:'Microsoft',h:'→',go:()=>location.href='company-swiss.html?c=microsoft'},{l:'Toggle grid',h:'G',go:()=>$('gridov').classList.toggle('on')},{l:'Contact',h:'07',go:jump('contact')}]);
 setTimeout(reveal,700);
 </script><script src="swiss-fx.js"></script><script src="dial.js"></script><script src="aicode.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script><script src="games.js"></script></body></html>

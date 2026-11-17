@@ -1,5 +1,507 @@
 /* Project data for the Swiss project pages. Stories come from the original portfolio; methods are written per project. */
 window.PJ=[
+{
+ "co": "lead",
+ "slug": "ux-strategy",
+ "name": "UX strategy and governance",
+ "area": "Strategy",
+ "role": "Staff design lead",
+ "frm": "Seven one-off designs",
+ "to": "One shared framework",
+ "line": "How I set the UX direction for a platform, and kept seven product areas designing from the same parts.",
+ "bg": "#E4E0F2",
+ "metric": "7",
+ "metricL": "product areas reuse one card framework",
+ "prob": "Teams shipped fast, and each designed its own version of the same pieces: how a notification reads, how a picker behaves, how a failure is explained. Every choice was reasonable alone. Together they made one product feel like several.",
+ "did": "Set the UX direction for Platform, Commands and Authentication, turned it into shared standards (the card framework, Circuit tokens and components), and kept product, engineering and design in step while it was adopted.",
+ "out": "7 product areas reuse the card framework · Slack and Webhooks became 2 shared blocks · Workflows reached 232 orgs, up from 93",
+ "intro": "I start strategy with a written position: what good looks like across the whole platform, and which decisions are worth making once. This case covers how I set that direction, how I kept stakeholders informed, how I resolved a hard constraint, and what changed once the framework existed.",
+ "ch": [
+  {
+   "k": "Strategy",
+   "h": "Decide once, reuse everywhere",
+   "blocks": [
+    {
+     "t": "The problem",
+     "d": "Each team drew its own message layout, its own dropdown and its own error wording. The cost was inconsistency, and a new feature meant designing the basics again."
+    },
+    {
+     "t": "The position I wrote",
+     "d": "I wrote the direction as a few principles, each with a reason and an example, so a PM or an engineer could apply it without asking me. The principles were about admins: clear states, safe defaults and no surprises."
+    },
+    {
+     "t": "The frameworks I used",
+     "d": "A card framework for every Slack message, with one layout and one way to show status. Circuit tokens and components, with every state drawn once. State tables, so each part says how it behaves in rest, hover, error and disabled.",
+     "key": true
+    }
+   ],
+   "call": "A framework only works when adding something new is cheaper than copying it. That was the test I kept using.",
+   "imgs": [
+    {
+     "src": "img/sl-alerts.png",
+     "cap": "One alert layout. A new alert source only means writing its content.",
+     "phone": false
+    },
+    {
+     "src": "img/ts-rows.png",
+     "cap": "Circuit: every state of a row drawn once.",
+     "phone": false
+    }
+   ]
+  },
+  {
+   "k": "Stakeholders",
+   "h": "Keeping product, engineering and design in step",
+   "blocks": [
+    {
+     "t": "Who needed what",
+     "d": "Product managers needed scope and timing. Engineers needed specs they could build and a component to start from. Other designers needed decisions explained, not just announced."
+    },
+    {
+     "t": "How I kept them informed",
+     "d": "Short written updates after each milestone, design reviews open to anyone, and working prototypes in Storybook. Reviews were about decisions to make, not screens to approve."
+    },
+    {
+     "t": "Prototypes as the update",
+     "d": "I built screens in Storybook with Cursor and Claude, so stakeholders and customers could click through something real in review calls, and I could change what they pointed out the same day.",
+     "key": true
+    }
+   ],
+   "call": "People who have used the prototype ask better questions than people who have seen the slide.",
+   "imgs": [
+    {
+     "src": "img/wf-templates.jpg",
+     "cap": "Workflows templates, reviewed as a working prototype before build.",
+     "phone": false
+    }
+   ]
+  },
+  {
+   "k": "Hard problems",
+   "h": "Resolving a constraint nobody could design around",
+   "blocks": [
+    {
+     "t": "The challenge",
+     "d": "Customers wanted Workflows to act in Salesforce, GitHub, Google Workspace and their own tools. Every API works differently, and credentials cannot sit inside a workflow step, because anyone who can edit the workflow could read them."
+    },
+    {
+     "t": "How it was resolved",
+     "d": "I split the problem in two. An admin sets up a connector once in Settings, with its credentials. A step in the builder only selects that connector. I accepted the extra trip to Settings and added a direct link from the step.",
+     "key": true
+    },
+    {
+     "t": "Checking what shipped",
+     "d": "Before release I checked the built screens against the design in every state, not only the happy path, and sent back specific fixes. Each run also shows the admin role it ran as, with a history that links to the audit trail, so an admin can answer who did what."
+    }
+   ],
+   "call": "The hardest design call was the one that added a step. It kept the product safe.",
+   "imgs": [
+    {
+     "src": "img/wf-connector.jpg",
+     "cap": "A step selects a connector. Credentials stay in Settings.",
+     "phone": false
+    },
+    {
+     "src": "img/wf-history.jpg",
+     "cap": "Every run, its steps, and the role it ran as.",
+     "phone": false
+    }
+   ]
+  },
+  {
+   "k": "Before and after",
+   "h": "What changed once the framework existed",
+   "blocks": [
+    {
+     "t": "Before",
+     "d": "Each team designed its own messages and its own dropdowns. A new alert type or a new picker meant a new design and a new set of states."
+    },
+    {
+     "t": "After",
+     "d": "Every alert uses the same layout. Tree select is one component with clear modes in place of one-off dropdowns. Slack and Webhooks are 2 shared blocks used across many features."
+    },
+    {
+     "t": "The result",
+     "d": "7 product areas reuse the card framework, from Access requests and Commands to SaaS management and Asset management. Workflows reached 232 orgs, up from 93, with 1,830 workflows built, and the first working workflow takes 20 minutes, down from 2h 45m.",
+     "key": true
+    }
+   ],
+   "call": "",
+   "imgs": []
+  }
+ ],
+ "method": [
+  {
+   "i": "target",
+   "t": "Write the position down",
+   "d": "A few principles with a reason and an example each, so anyone can apply them."
+  },
+  {
+   "i": "layers",
+   "t": "Build the shared parts",
+   "d": "The card framework, tokens and components, with every state drawn once."
+  },
+  {
+   "i": "users",
+   "t": "Keep people in step",
+   "d": "Written updates, open reviews and working prototypes, not only slides."
+  },
+  {
+   "i": "check",
+   "t": "Check what ships",
+   "d": "Built screens are checked against the design in every state."
+  },
+  {
+   "i": "eye",
+   "t": "Test it without me",
+   "d": "If a team can use it unaided, it works. If not, I fix the framework."
+  }
+ ],
+ "facts": [
+  [
+   "Scope",
+   "Platform, Commands, Authentication"
+  ],
+  [
+   "Reused by",
+   "7 product areas"
+  ],
+  [
+   "Became",
+   "2 shared blocks"
+  ],
+  [
+   "Workflows",
+   "232 orgs, up from 93"
+  ]
+ ]
+},
+{
+ "co": "lead",
+ "slug": "accessibility",
+ "name": "Accessibility across four platforms",
+ "area": "Accessibility",
+ "role": "Design lead",
+ "frm": "A check at the end",
+ "to": "A map before the build",
+ "line": "How I mapped and reviewed accessibility for Defender for Individuals on iOS, Android, Windows and macOS.",
+ "bg": "#D9EEE2",
+ "metric": "4",
+ "metricL": "platforms mapped: iOS, Android, Windows and macOS",
+ "prob": "Defender for Individuals runs on four platforms. Each has its own screen reader, its own focus behaviour and its own text-scaling rules, so a screen that works on one can fail on another.",
+ "did": "Mapped accessibility for Defender for Individuals on all four platforms, set the review checklist, and reviewed screens before they went to engineering. I used the same approach to review other products.",
+ "out": "One set of status words and patterns that behave the same on every device · every screen reviewed per platform before build",
+ "intro": "Accessibility is easier to get right as a map drawn before the build than as a list of bugs after it. This case covers the map, the patterns that came out of it, and how I reviewed products before they shipped.",
+ "ch": [
+  {
+   "k": "Mapping",
+   "h": "One map per screen, per platform",
+   "blocks": [
+    {
+     "t": "What the map holds",
+     "d": "For each screen: every control and the name a screen reader gives it, the order focus moves in, contrast and use of colour, how text and layout behave when scaled, and what is announced when status changes."
+    },
+    {
+     "t": "Four platforms, three screen readers",
+     "d": "VoiceOver on iOS and macOS, TalkBack on Android and Narrator on Windows. Each reads a screen a little differently, so the map is made per platform and not once for all."
+    },
+    {
+     "t": "Why a map",
+     "d": "A map shows the gaps before anything is built. Engineers get a checklist per platform in place of a general request to make it accessible.",
+     "key": true
+    }
+   ],
+   "call": "Status words like Protected and Active mean the same on every device.",
+   "imgs": [
+    {
+     "src": "img/defender-ios-1.jpg",
+     "cap": "iOS: a recommendation card and monitoring cards.",
+     "phone": true
+    },
+    {
+     "src": "img/defender-android-2.jpg",
+     "cap": "Android: device protection.",
+     "phone": true
+    },
+    {
+     "src": "img/defender-ios-3.jpg",
+     "cap": "iOS: monitoring and alerts.",
+     "phone": true
+    }
+   ]
+  },
+  {
+   "k": "Patterns",
+   "h": "Status that does not depend on colour",
+   "blocks": [
+    {
+     "t": "Never colour alone",
+     "d": "Protection status uses an icon and a plain word as well as colour, so it reads correctly for people who cannot tell the colours apart and in a screen reader."
+    },
+    {
+     "t": "Plain words",
+     "d": "Enterprise security language does not work for a household, so every term was rewritten for people. It helps everyone, and it matters most to someone using a screen reader."
+    },
+    {
+     "t": "Announce what changes",
+     "d": "When protection status or an alert changes, the screen says so, so nobody is left reading stale information.",
+     "key": true
+    }
+   ],
+   "call": "The same pattern on every platform means one thing to learn, not four.",
+   "imgs": [
+    {
+     "src": "img/defender-android-1.jpg",
+     "cap": "Android: the home screen.",
+     "phone": true
+    },
+    {
+     "src": "img/defender-ios-2.jpg",
+     "cap": "iOS: more of the protection experience.",
+     "phone": true
+    }
+   ]
+  },
+  {
+   "k": "Review",
+   "h": "Reviewing products before they ship",
+   "blocks": [
+    {
+     "t": "How I review",
+     "d": "I check the built screen against the map on a real device, with the platform screen reader on, with large text, and with a keyboard where there is one. I send back specific fixes, each with the screen and the state."
+    },
+    {
+     "t": "Reviewing other teams' products",
+     "d": "I used the same checklist on other products, so every team gets the same questions in the same order."
+    },
+    {
+     "t": "Making it routine",
+     "d": "Where I can, I put the behaviour in the component: its labels, its focus and its states. Teams then inherit it instead of checking it again each time.",
+     "key": true
+    }
+   ],
+   "call": "Review works best when it comes early and arrives as a short, specific list.",
+   "imgs": [
+    {
+     "src": "img/ts-field.png",
+     "cap": "Circuit: a component with each state defined once.",
+     "phone": false
+    }
+   ]
+  },
+  {
+   "k": "Before and after",
+   "h": "What changed once the map existed",
+   "blocks": [
+    {
+     "t": "Before",
+     "d": "Accessibility was a check near the end, screen by screen, so fixes landed after the design was done."
+    },
+    {
+     "t": "After",
+     "d": "Each screen has a map before it is built. Fixes arrive as specific items per platform, and the same patterns carry across all four."
+    },
+    {
+     "t": "The result",
+     "d": "One product on four platforms, with status that reads the same everywhere and a review checklist other teams can reuse.",
+     "key": true
+    }
+   ],
+   "call": "",
+   "imgs": []
+  }
+ ],
+ "method": [
+  {
+   "i": "grid",
+   "t": "Map each screen",
+   "d": "Controls, names, focus order, contrast, scaling and announcements, per platform."
+  },
+  {
+   "i": "ear",
+   "t": "Use the real screen readers",
+   "d": "VoiceOver, TalkBack and Narrator, on real devices."
+  },
+  {
+   "i": "eye",
+   "t": "Never rely on colour",
+   "d": "Status carries an icon and a plain word as well as colour."
+  },
+  {
+   "i": "check",
+   "t": "Review before build",
+   "d": "Short, specific fixes, sent early."
+  },
+  {
+   "i": "layers",
+   "t": "Put it in the component",
+   "d": "Teams inherit the behaviour instead of rechecking it."
+  }
+ ],
+ "facts": [
+  [
+   "Product",
+   "Defender for Individuals"
+  ],
+  [
+   "Platforms",
+   "iOS, Android, Windows, macOS"
+  ],
+  [
+   "Method",
+   "A map per screen, per platform"
+  ],
+  [
+   "Review",
+   "On device, with the platform screen reader"
+  ]
+ ]
+},
+{
+ "co": "lead",
+ "slug": "research-priority",
+ "name": "Keeping research a priority",
+ "area": "Research",
+ "role": "Design lead",
+ "frm": "Decisions on assumptions",
+ "to": "Decisions on evidence",
+ "line": "How I kept customer research in every big decision when there was no research budget.",
+ "bg": "#F4E5DA",
+ "metric": "20 min",
+ "metricL": "to a first working workflow, down from 2h 45m",
+ "prob": "When budgets tighten, research is often the first thing cut, because its value is hard to see in advance. I needed customer evidence in every major decision without a research budget to spend.",
+ "did": "Built a lean research practice: use the evidence the company already holds, test working prototypes with customers in calls that were already planned, and tie each finding to revenue or support risk so it stayed on the roadmap.",
+ "out": "Formal research for Alerts V2 · admin workflows analysed from Gong recordings · first working workflow in 20 min, down from 2h 45m · Workflows reached 232 orgs",
+ "intro": "I formalised research at Pramati and ran it again at JumpCloud for Alerts V2. When budgets were cut, the question was not whether to do research but how to do it cheaper without it turning into opinion. This is the approach I used.",
+ "ch": [
+  {
+   "k": "Framework",
+   "h": "The evidence ladder",
+   "blocks": [
+    {
+     "t": "Start with what exists",
+     "d": "Before any new study I look at what the company already holds: recorded customer calls, support tickets and usage data. For admin workflows I analysed Gong recordings to see what admins were trying to do and where they got stuck."
+    },
+    {
+     "t": "Then the smallest new study",
+     "d": "A few customers, a working prototype, and calls that were already planned. Because I build screens in Storybook, hearing a reaction costs a call and not a study."
+    },
+    {
+     "t": "Escalate only when it matters",
+     "d": "I run formal research, as I did for Alerts V2, when the decision is large or the evidence disagrees with itself.",
+     "key": true
+    }
+   ],
+   "call": "Each rung costs more than the one below it, so I only climb when the decision needs it.",
+   "imgs": [
+    {
+     "src": "img/jc-flows.jpg",
+     "cap": "The Workflows builder, shown to customers as working screens.",
+     "phone": false
+    }
+   ]
+  },
+  {
+   "k": "Priority",
+   "h": "Making research hard to cut",
+   "blocks": [
+    {
+     "t": "Name the decision",
+     "d": "Each study starts from the decision it will change and who will make it. Research with no decision attached is the first thing to lose funding."
+    },
+    {
+     "t": "Report in the leaders' terms",
+     "d": "I put findings next to the figures leaders already track: customer demand (about $2M MRR for Workflows), revenue at renewal (about $1M MRR retained for code backup) and support load (40% fewer access-related tickets for conditional access)."
+    },
+    {
+     "t": "Share what was learned",
+     "d": "A short written readout after every study, and a working prototype anyone can open. People protect research they have seen change a decision.",
+     "key": true
+    }
+   ],
+   "call": "Research survives a budget cut when leaders can point to the decision it changed.",
+   "imgs": [
+    {
+     "src": "img/wf-history.jpg",
+     "cap": "Run history, so an admin can answer an auditor.",
+     "phone": false
+    }
+   ]
+  },
+  {
+   "k": "Impact",
+   "h": "What changed in the product",
+   "blocks": [
+    {
+     "t": "Before",
+     "d": "A blank canvas. Admins had to turn their job into triggers and actions before they could do anything, and many got stuck there."
+    },
+    {
+     "t": "After",
+     "d": "Templates start from the job. Each card says in one sentence when the workflow runs and what it does, and using one creates an editable copy that stays off until the admin turns it on."
+    },
+    {
+     "t": "The result",
+     "d": "The first working workflow takes 20 minutes, down from 2h 45m. Workflows reached 232 orgs, up from 93, and 1,830 workflows have been built.",
+     "key": true
+    }
+   ],
+   "call": "Admins find their own problem first and look at how it is built second.",
+   "imgs": [
+    {
+     "src": "img/wf-templates.jpg",
+     "cap": "Templates, grouped by the job an admin is trying to get done.",
+     "phone": false
+    }
+   ]
+  }
+ ],
+ "method": [
+  {
+   "i": "eye",
+   "t": "Look at what exists",
+   "d": "Calls, tickets and usage data before any new study."
+  },
+  {
+   "i": "ear",
+   "t": "Listen to recorded calls",
+   "d": "Gong recordings of admin workflows showed where people got stuck."
+  },
+  {
+   "i": "bolt",
+   "t": "Test working prototypes",
+   "d": "Customers react to real screens in calls already planned."
+  },
+  {
+   "i": "target",
+   "t": "Tie it to a decision",
+   "d": "Every study names the decision it will change."
+  },
+  {
+   "i": "check",
+   "t": "Report in business terms",
+   "d": "Findings sit next to demand, renewal and support figures."
+  }
+ ],
+ "facts": [
+  [
+   "Methods",
+   "Call analysis, prototype tests, formal studies"
+  ],
+  [
+   "Alerts V2",
+   "Formal research"
+  ],
+  [
+   "Earlier",
+   "Research practice at Pramati"
+  ],
+  [
+   "Result",
+   "20 min to a first workflow, from 2h 45m"
+  ]
+ ]
+},
  {
   "co": "jumpcloud",
   "slug": "workflows",
