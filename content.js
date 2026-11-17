@@ -7,14 +7,14 @@ window.PF = {
   email: "dharshan37@outlook.com",
   resume: "Baladharshan-Resume-2026-Lite.pdf",
   studio: { name: "Bangalore66", url: "https://bangalore66.framer.website", line: "Photography studio. Shoots for pets, products, fashion and food." },
-  intro: "I lead UX strategy, research and accessibility for enterprise platforms.",
-  sub: "I'm a Staff Product Designer at JumpCloud. I set the UX direction across Platform, Commands and Authentication, and keep research and accessibility in every decision.",
+  intro: "I lead UX strategy, research and design systems for enterprise platforms.",
+  sub: "I'm a Staff Product Designer at JumpCloud. I set the UX direction across Platform, Commands and Authentication, back it with research, and turn it into shared standards.",
   work: [
-    { co: "JumpCloud", role: "Staff Product Designer", when: "Jan 2024 — Present", line: "UX lead for Platform, Commands and Authentication: strategy, research, accessibility and shared standards.",
+    { co: "JumpCloud", role: "Staff Product Designer", when: "Jan 2024 — Present", line: "UX lead for Platform, Commands and Authentication: strategy, research and shared standards.",
       detail: {
       slug: "jumpcloud",
       accent: "#6FD3C3",
-      summary: "I set the UX direction for Platform, Commands and Authentication, hands-on or managing depending on what each project needs. I turn it into shared standards, keep research and accessibility in every decision, and keep product and engineering in step. Most of it starts in the unknown: Workflows began as a hackathon idea and went to GA in 25 days.",
+      summary: "I set the UX direction for Platform, Commands and Authentication, hands-on or managing depending on what each project needs. I turn it into shared standards, back it with research, and keep product and engineering in step. Most of it starts in the unknown: Workflows began as a hackathon idea and went to GA in 25 days.",
       impact: [
         { n: "~$2M", l: "MRR of customer demand answered by Workflows" },
         { n: "232", l: "orgs run Workflows, up from 93" },
@@ -64,11 +64,11 @@ window.PF = {
         "Took enterprise security to people and families: protection status, alerts and monitoring"
       ],
       projects: [
-        { t: "Microsoft Defender", d: "Protection status, alerts, and credit and dark web monitoring, including family members.", img: "img/defender-ios-1.jpg", m: "iOS and Android" },
+        { t: "Microsoft Defender", d: "Protection status, alerts, and credit and dark web monitoring, including family members.", img: "img/def-defender-redesign.jpg", m: "iOS and Android" },
       ]
     },
     projects: [
-      { t: "Microsoft Defender", m: "0 → 1", d: "Consumer security app on iOS and Android, plus a mobile platform framework", img: "img/defender-ios-1.jpg", url: "https://app.pitch.com/app/presentation/6c1b06eb-1019-4c1b-9b7c-6e6dab221c61/ee534318-9053-49cb-89fc-4bf7506d3c77/39012ae9-3291-4272-af1a-da718af71380", cta: "Read the case study" }
+      { t: "Microsoft Defender", m: "0 → 1", d: "Consumer security app on iOS and Android, plus a mobile platform framework", img: "img/def-defender-redesign.jpg", url: "https://app.pitch.com/app/presentation/6c1b06eb-1019-4c1b-9b7c-6e6dab221c61/ee534318-9053-49cb-89fc-4bf7506d3c77/39012ae9-3291-4272-af1a-da718af71380", cta: "Read the case study" }
     ] },
     { co: "Pramati Technologies", role: "Interaction Designer", when: "Mar 2019 — Jan 2021", line: "An API design platform, and a formal research practice." },
     { co: "UX Mint", role: "UX Intern", when: "Oct 2018 — Mar 2019", line: "UX internship." },
@@ -98,9 +98,8 @@ window.PF = {
     ["Set the direction, then write it down", "A few principles, each with a reason and an example, so any team can apply them. One framework reused across seven product areas beats seven one-offs."],
     ["Keep everyone in step", "Short written updates, open design reviews and working prototypes keep product, engineering and design looking at the same thing."],
     ["Speak for the user", "Every decision gets asked: who is this for, and what did we hear from them? I bring that evidence into the room."],
-    ["Accessible by design", "A map per screen and per platform before the build, and a review on a real device before release."],
     ["Research that survives a budget cut", "Use the evidence we already hold, test working prototypes in calls already planned, and tie each finding to the decision it changed."],
-    ["Check what ships", "Built screens are checked against the design in every state, and the shared parts carry the standard so teams inherit it."]
+    ["Check what ships", "Built screens are checked against the design in every state, including other languages and screen readers, and the shared parts carry the standard so teams inherit it."]
   ],
   ai: {
     done: 9, total: 11, tools: ["Cursor", "Claude", "Storybook"],

@@ -1,6 +1,6 @@
 <!doctype html><html lang="en"><head><script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Baladharshan — Staff Product Designer · UX Lead</title>
-<meta name="description" content="Staff product designer at JumpCloud. UX strategy, research, accessibility and design systems for enterprise platforms.">
+<meta name="description" content="Staff product designer at JumpCloud. UX strategy, research and design systems for enterprise platforms.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Noto+Sans+Tamil&family=Noto+Sans+Telugu&family=Noto+Sans+Devanagari&family=Noto+Sans+Kannada&family=Noto+Sans+Malayalam&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="shared.css">
@@ -256,10 +256,10 @@ footer{margin:64px 0 40px;font-size:13px;color:var(--muted);display:flex;justify
 const P=PF,$=id=>document.getElementById(id),reduce=matchMedia('(prefers-reduced-motion:reduce)').matches,pad=n=>String(n).padStart(2,'0');
 pageWipe();clock($('clk'));
 // ---- hero ----
-const lines=['I lead UX strategy,','research and <mark>accessibility</mark>.'];
+const lines=['I lead UX strategy,','research and <mark>design systems</mark>.'];
 $('h').innerHTML=lines.map((l,i)=>`<span class="ln"><span style="--i:${i}">${l}</span></span>`).join('');
 $('h').setAttribute('aria-label',P.intro);
-$('sub').innerHTML='I’m a Staff Product Designer at <b>JumpCloud</b>.<br>I set the UX direction for enterprise platforms and keep research and accessibility in every decision.';
+$('sub').innerHTML='I’m a Staff Product Designer at <b>JumpCloud</b>.<br>I set the UX direction for enterprise platforms, back it with research, and turn it into shared standards.';
 // halftone portrait on hover
 pixelPortrait({src:'img/portrait.jpg',canvas:$('px'),hover:$('pxbox'),mode:'halftone',ink:[11,11,11],crop:{x:330,y:140,w:694,h:817},});
 $('pxlab').textContent='(hover)';
@@ -272,7 +272,7 @@ $('rows').innerHTML=P.work.map(w=>w.detail
   :`<div class="wr plain ${LOGO[w.co]?'hl ':''}rv">${lg(w.co)}<div class="head"><div class="nm"><b>${w.co}</b><span class="rl">${w.role}</span></div><time>${w.when}</time></div><p>${w.line}</p></div>`).join('');
 $('resnav').href=P.resume;$('resnav2').href=P.resume;
 const CO={jumpcloud:'JumpCloud',microsoft:'Microsoft',lead:'UX leadership'};
-const FEATURED=['ux-strategy','accessibility','research-priority'];
+const FEATURED=['ux-strategy','defender','research-priority'];
 const more=['jumpcloud','microsoft'].map(c=>`<a href="company-swiss.html?c=${c}" data-go="${CO[c]}">All ${CO[c]} projects (${PJ.filter(x=>x.co===c).length}) →</a>`).join('');
 $('feat').innerHTML=FEATURED.map(sl=>PJ.find(x=>x.slug===sl)).map(x=>`<a class="fr rv" data-go="${x.name}" href="project-swiss.html?p=${x.slug}"><div class="t"><small>${CO[x.co]} · ${x.area}</small><h3>${x.name}</h3><p>${x.line}</p><div class="m"><b>${x.metric}</b>${x.metricL}</div><span class="go">Explore the project <i style="font-style:normal">→</i></span></div><div class="fi" style="--cbg:${x.bg}"><img src="thumbs/cards/${x.slug}.jpg" alt="${x.name}" loading="lazy"></div></a>`).join('')+`<div class="more">${more}</div>`;
 
