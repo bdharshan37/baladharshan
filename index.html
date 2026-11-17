@@ -226,8 +226,8 @@ footer{margin:64px 0 40px;font-size:13px;color:var(--muted);display:flex;justify
   </section>
 
   <div class="grid" id="work"><div class="lab rv"><i>01</i>Experience</div><div id="rows"></div></div>
-  <div class="imx" id="impact"><div class="imx-in"><div class="lab rv"><i>02</i>Impact</div><div id="im"><div class="imv"><div id="imrows"></div><div class="improg"><i id="imbar"></i></div></div><div class="imstage" id="imstage"><canvas id="imcv"></canvas><canvas id="imcv2"></canvas><div class="imhud"><span id="imtag"></span><span id="imn"></span></div></div></div></div></div>
   <section class="sel" id="selected"><div class="sel-h">Work · open a project to see how it was made</div><div id="feat"></div></section>
+  <div class="imx" id="impact"><div class="imx-in"><div class="lab rv"><i>02</i>Impact</div><div id="im"><div class="imv"><div id="imrows"></div><div class="improg"><i id="imbar"></i></div></div><div class="imstage" id="imstage"><canvas id="imcv"></canvas><canvas id="imcv2"></canvas><div class="imhud"><span id="imtag"></span><span id="imn"></span></div></div></div></div></div>
   <div class="grid" id="deck"><div class="lab rv"><i>↳</i>Case studies</div>
     <div class="rv" id="call"><div class="call"><div class="dial" id="dial"></div>
       <div class="cl"><small class="kick">Presented live, not posted</small><h3>Case studies are a conversation.</h3>
@@ -310,6 +310,6 @@ addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
 document.addEventListener('mouseover',e=>{dot.classList.toggle('big',!!e.target.closest('a.wr,#pxbox,.ph img'))});
 // grid overlay
 addEventListener('keydown',e=>{if((e.key==='g'||e.key==='G')&&!/INPUT|TEXTAREA/.test(document.activeElement.tagName))$('gridov').classList.toggle('on')});
-palette([{l:'Experience',h:'01',go:jump('work')},{l:'Impact',h:'02',go:jump('impact')},{l:'Work',h:'↓',go:jump('selected')},{l:'Case studies',h:'🔒',go:jump('deck')},{l:'Principles',h:'03',go:jump('beliefs')},{l:'After hours',h:'↓',go:jump('after')},{l:'Off the clock',h:'▶',go:jump('games')},{l:'JumpCloud',h:'→',go:()=>location.href='company-swiss.html?c=jumpcloud'},{l:'Microsoft',h:'→',go:()=>location.href='company-swiss.html?c=microsoft'},{l:'Toggle grid',h:'G',go:()=>$('gridov').classList.toggle('on')},{l:'Contact',h:'07',go:jump('contact')}]);
+palette([{l:'Experience',h:'01',go:jump('work')},{l:'Work',h:'↓',go:jump('selected')},{l:'Impact',h:'02',go:jump('impact')},{l:'Case studies',h:'🔒',go:jump('deck')},{l:'Principles',h:'03',go:jump('beliefs')},{l:'After hours',h:'↓',go:jump('after')},{l:'Off the clock',h:'▶',go:jump('games')},{l:'JumpCloud',h:'→',go:()=>location.href='company-swiss.html?c=jumpcloud'},{l:'Microsoft',h:'→',go:()=>location.href='company-swiss.html?c=microsoft'},{l:'Toggle grid',h:'G',go:()=>$('gridov').classList.toggle('on')},{l:'Contact',h:'07',go:jump('contact')}]);
 setTimeout(reveal,700);
 </script><script src="swiss-fx.js"></script><script src="dial.js"></script><script src="aicode.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script><script src="games.js"></script></body></html>

@@ -76,8 +76,6 @@ window.PF = {
   impact: [
     { n: "~$2M", l: "MRR of customer demand answered", s: "Workflows" },
     { n: "7", l: "product areas reuse the card framework", s: "Slack approvals" },
-    { n: "~$1M", l: "MRR retained at renewal", s: "TOTP cloud backup" },
-    { n: "40%", l: "fewer access-related support tickets", s: "Conditional access" },
     { n: "20 min", l: "to a first working workflow, down from 2h 45m", s: "Workflows" },
     { n: "10M+", l: "Android downloads, ~1.5M monthly active users (est.)", s: "Microsoft Defender" }
   ],

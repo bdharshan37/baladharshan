@@ -3,8 +3,6 @@
    2. Impact stage: an abstract particle sculpture (Three.js) that re-forms into a recognisable icon for each number.
       ~$2M        a workflow graph: trigger → condition → two actions
       7 areas     the Slack mark, in Slack's four colours
-      ~$1M        a cloud with a padlock: codes backed up, renewal kept
-      40%         a security shield with a tick: policy decides at sign-in
       20 min      165 minute-blocks collapse to 20 (2D, hover to scrub)
       10M+        the Apple and Google Play marks
    Icons are drawn once to an offscreen canvas and sampled into points, so any shape can be added with a few lines. */
@@ -19,7 +17,9 @@
   const cv=document.getElementById('imcv'),c2=document.getElementById('imcv2');if(!cv||!c2)return;
   const stage=cv.parentElement,rows=[...document.querySelectorAll('#imrows .im')],g=c2.getContext('2d');
   const hudTag=document.getElementById('imtag'),hudN=document.getElementById('imn');
-  const TAGS=['workflows: one trigger, every action','slack: one card, seven areas','cloud + lock: codes restored','shield: policy at sign-in','2h 45 → 20 min','app store · google play'];
+  const TAGS=['workflows: one trigger, every action','slack: one card, seven areas','2h 45 → 20 min','app store · google play'];
+  /* each slide uses one of the drawn shapes below (the cloud and shield shapes are kept but unused) */
+  const MAP=[0,1,4,5];
   const css=getComputedStyle(document.documentElement),ACC=css.getPropertyValue('--accent').trim()||'#FF3B1F',INK='#0B0B0B',LINE='#E4E4E4',MUT='#737373';
   let age=0,cur=0,vis=false,px=null,py=null,hover=false,W=300,H=300,tx=0,ty=0,mx=0,my=0,lastT=0;
 
@@ -32,7 +32,7 @@
     const best=clamp(Math.round(slidePos),0,nS-1);
     if(best!==cur||!hudTag.textContent){cur=best;ct=0;age=0;rows.forEach((r2,i)=>r2.classList.toggle('act',i===cur));
       hudTag.textContent=TAGS[cur]||'';hudN.textContent='0'+(cur+1)+' / 0'+nS;
-      cv.style.opacity=cur===4?0:1;c2.style.opacity=cur===4?1:0}};
+      cv.style.opacity=MAP[cur]===4?0:1;c2.style.opacity=MAP[cur]===4?1:0}};
   sizeImx();addEventListener('resize',()=>{sizeImx();pick()});
   addEventListener('scroll',pick,{passive:true});
   stage.addEventListener('pointermove',e=>{const b=stage.getBoundingClientRect();px=e.clientX-b.left;py=e.clientY-b.top;hover=true;tx=px/b.width-.5;ty=py/b.height-.5});
@@ -106,7 +106,7 @@
     let p;
     if(hover&&px!=null){p=clamp((px-W*.12)/(W*.76))}
     else{/* scroll-linked: the blocks collapse as this row travels through the middle of the screen */
-      p=clamp((slidePos-3.5)/.75)}
+      p=clamp((slidePos-1.5)/.75)}
     const cols=15,rowsN=11,pad=22,cell=(W-pad*2)/cols,ch=Math.min(cell,(H-130)/rowsN),top=Math.max(40,(H-rowsN*ch)/2-18),sz=ch*.74;
     for(let i=0;i<MIN;i++){const c=i%cols,r=Math.floor(i/cols),rank=(MIN-1-i)/(MIN-KEEP),kept=i<KEEP,gone=!kept?clamp((p-rank*.8)/.2):0;
       if(gone>=1)continue;const s=sz*(1-gone),x=pad+c*cell+(cell-s)/2,y=top+r*ch+(ch-s)/2-gone*10;
@@ -127,9 +127,9 @@
     if(!vis)return;
     const dt=Math.min(.05,(t-lastT)/1000||.016);lastT=t;
     age+=dt;
-    if(cur===4){g.clearRect(0,0,W,H);collapse(dt)}
+    if(MAP[cur]===4){g.clearRect(0,0,W,H);collapse(dt)}
     else if(renderer){
-      const tp=shapes[cur],tc=colors[cur],kp=reduce?1:.07,time=t*.001;
+      const tp=shapes[MAP[cur]],tc=colors[MAP[cur]],kp=reduce?1:.07,time=t*.001;
       for(let i=0;i<N*3;i++){pos[i]+=(tp[i]-pos[i])*kp;col[i]+=(tc[i]-col[i])*.1}
       geo.attributes.position.needsUpdate=true;geo.attributes.color.needsUpdate=true;
       mx+=(tx-mx)*.06;my+=(ty-my)*.06;
