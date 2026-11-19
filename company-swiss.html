@@ -46,6 +46,8 @@ h1{font-weight:400;font-size:clamp(40px,7vw,84px);line-height:1;letter-spacing:-
 .fr .fi{background:var(--cbg);border-radius:22px;overflow:hidden}
 .fr .fi img{display:block;width:100%;aspect-ratio:1200/860;object-fit:cover;transition:transform .9s cubic-bezier(.2,.8,.2,1)}
 .fr:hover .fi img{transform:scale(1.03)}
+.fr .fi{position:relative}.fr .lk{position:absolute;top:16px;right:16px;display:inline-flex;align-items:center;gap:7px;background:rgba(11,11,11,.82);color:#fff;font-size:13px;padding:8px 14px;border-radius:99px;backdrop-filter:blur(6px)}
+.fr.locked .fi img{filter:saturate(.85)}
 @media(max-width:820px){.fr{grid-template-columns:1fr;gap:24px;padding:40px 0}.fr .fi{order:-1}}
 
 .next{display:block;margin-top:96px;padding:36px 0 44px;border-top:1px solid var(--fg);transition:background .25s,color .25s,padding .35s}
@@ -82,7 +84,9 @@ $('sum').textContent=d.summary;
 $('cur').textContent=' / '+w.co;
 $('im').innerHTML=d.impact.map(i=>`<div class="im rv"><b data-c>${i.n}</b><span>${i.l}${i.est?' <em>est.</em>':''}</span></div>`).join('');
 $('did').innerHTML=d.did.map((t,i)=>`<li class="rv"><i>${pad(i+1)}</i>${t}</li>`).join('');
-$('pl').innerHTML=PJ.filter(x=>x.co===d.slug).map(x=>`<a class="fr rv" data-go="${x.name}" href="project-swiss.html?p=${x.slug}"><div class="t"><small>${x.area}</small><h3>${x.name}</h3><p>${x.line}</p><div class="m"><b>${x.metric}</b>${x.metricL}</div><span class="go">Explore the project <i style="font-style:normal">→</i></span></div><div class="fi" style="--cbg:${x.bg}"><img src="thumbs/cards/${x.slug}.jpg" alt="${x.name}" loading="lazy"></div></a>`).join('');
+const LOCKED=['conditional-access','protect'];
+const LOCK='<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>';
+$('pl').innerHTML=PJ.filter(x=>x.co===d.slug).map(x=>{const lk=LOCKED.includes(x.slug);return `<a class="fr rv${lk?' locked':''}" ${lk?'href="index.html#deck"':`data-go="${x.name}" href="project-swiss.html?p=${x.slug}"`}><div class="t"><small>${x.area}</small><h3>${x.name}</h3><p>${x.line}</p><div class="m"><b>${x.metric}</b>${x.metricL}</div><span class="go">${lk?LOCK+' Case study on a call <i style="font-style:normal">→</i>':'Explore the project <i style="font-style:normal">→</i>'}</span></div><div class="fi" style="--cbg:${x.bg}"><img src="thumbs/cards/${x.slug}.jpg" alt="${x.name}" loading="lazy">${lk?`<span class="lk">${LOCK} Locked</span>`:''}</div></a>`}).join('');
 $('next').innerHTML=`<small>Next</small><b>${o.co} →</b>`;$('next').href='company-swiss.html?c='+o.detail.slug;$('next').dataset.go=o.co;
 if(list.length<2)$('next').remove();
 $('mail').textContent=P.email;$('mail').href='mailto:'+P.email;
