@@ -115,7 +115,13 @@ window.PJ=[
      }
     ],
     "call": "AI let me finish a large build in 25 days and still review it with customers.",
-    "imgs": []
+    "imgs": [
+     {
+      "src": "img/wf-ai-assistant-hi.jpg",
+      "cap": "The Workflows AI Assistant: a sentence in the chat becomes a draft workflow in the side panel.",
+      "phone": false
+     }
+    ]
    }
   ],
   "method": [
